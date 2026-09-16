@@ -1,0 +1,50 @@
+Role 	Gene	Axis1	Axis2	Axis3	Axis4
+Acetyl-CoA carboxylase	accD	0.09908	-0.12687	0.13427	-0.1333
+ATP synthase	atpA	-0.11582	0.14601	0.07121	0.26495
+ATP synthase	atpB	-0.19464	0.18996	0.11513	0.20241
+ATP synthase	atpE	-0.06404	0.23035	0.31207	0.16534
+ATP synthase	atpF	0.11063	0.02196	0.05919	0.01542
+ATP synthase	atpI	-0.28116	-0.14865	0.0088	0.16865
+Cytochrome b6f complex	ccsA	-0.08881	-0.33906	-0.18474	0.06925
+Membrane protein	cemA	0.06316	-0.26204	0.15463	-0.21615
+Protease subunit	clpP1	-0.09907	0.12018	0.07714	0.17527
+Maturase	matK	0.17315	-0.26061	-0.00944	-0.10977
+NAD(P)H dehydrogenase	ndhA	-0.05847	-0.26661	0.02677	0.15005
+NAD(P)H dehydrogenase	ndhB	-0.14155	-0.22428	0.2004	-0.01976
+NAD(P)H dehydrogenase	ndhC	-0.2114	-0.21113	-0.03575	0.05049
+NAD(P)H dehydrogenase	ndhE	0.02239	-0.22525	-0.09445	0.12335
+NAD(P)H dehydrogenase	ndhF	-0.04476	-0.30899	-0.13418	0.09823
+NAD(P)H dehydrogenase	ndhG	-0.12212	-0.329	-0.19248	0.22176
+NAD(P)H dehydrogenase	ndhH	0.01823	0.09612	0.13042	0.08311
+NAD(P)H dehydrogenase	ndhI	0.03778	0.06444	0.09019	-0.12289
+NAD(P)H dehydrogenase	ndhJ	-0.03934	0.06938	-0.02406	-0.05508
+NAD(P)H dehydrogenase	ndhK	0.0714	-0.05698	-0.09747	0.0251
+Photosystem II	pafI	0.047	0.04578	0.19787	0.12024
+Photosystem II	pafII	-0.04329	-0.04324	-0.08636	0.01147
+Cytochrome b6f complex	petA	-0.01549	0.09629	-0.02523	0.16534
+Cytochrome b6f complex	petB	-0.29583	-0.00759	-0.13285	-0.02561
+Cytochrome b6f complex	petD	-0.29779	0.02845	-0.07887	0.21924
+Photosystem I	psaA	-0.32822	-0.00566	-0.09652	-0.15374
+Photosystem I	psaB	-0.25749	-0.09722	-0.10603	-0.08096
+Photosystem II	psbA	-0.53105	-0.01628	0.34759	-0.32105
+PSII CP47 antenna protein	psbB	-0.28051	0.05544	-0.22815	0.01188
+Photosystem II	psbD	-0.43227	-0.03491	0.02152	-0.07258
+Rubisco	rbcL	-0.21856	0.20931	0.0949	-0.16403
+Ribosomal protein	rpl14	-0.02253	0.29678	0.16445	0.07228
+Ribosomal protein	rpl16	0.08635	0.38912	-0.18341	0.13683
+Ribosomal protein	rpl2	-0.00071	0.38781	-0.11385	-0.04562
+Ribosomal protein	rpl20	0.32346	0.20881	-0.28636	-0.15815
+Ribosomal protein	rpl22	0.19	0.22461	0.00652	-0.262
+RNA polymerase	rpoA	0.18738	0.02084	0.12693	-0.00469
+RNA polymerase	rpoB	0.06734	0.08467	0.02695	0.09221
+RNA polymerase	rpoC1	0.10127	0.0978	0.05295	0.02778
+RNA polymerase	rpoC2	0.12212	0.02491	-0.02516	-0.00911
+Ribosomal protein	rps11	-0.13626	0.47327	-0.21786	-0.12646
+Ribosomal protein	rps14	0.35347	0.29056	-0.51658	-0.34275
+Ribosomal protein	rps18	0.36048	0.14165	-0.19557	-0.0553
+Ribosomal protein	rps2	0.08028	0.1929	-0.00801	-0.06689
+Ribosomal protein	rps3	0.23723	0.16982	0.14901	0.11545
+Ribosomal protein	rps4	0.14935	0.18247	-0.22081	-0.01971
+Ribosomal protein	rps7	0.04003	0.32324	-0.37422	-0.1178
+Ribosomal protein	rps8	0.21246	0.19879	0.28308	-0.13947
+TIC complex	ycf1	0.38662	-0.08874	0.02454	-0.03733

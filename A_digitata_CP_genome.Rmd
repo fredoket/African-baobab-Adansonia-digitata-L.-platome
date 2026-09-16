@@ -1,0 +1,1607 @@
+---
+title: "A. digitata plastome assembly"
+author: "Oketch Fredrick Onyango"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Load the required packages
+
+```{r echo=FALSE, message=FALSE}
+pacman::p_load(
+  tidyverse,
+  viridis,
+  reshape2,
+  ggpubr
+)
+library(ggplot2)
+library(ggrepel)
+library(dplyr)
+library(tidyr)
+library(patchwork)
+library(ggbreak)
+library(ggdendro)
+library(factoextra)
+library(ggplotify)
+library(gridExtra)
+```
+
+
+## ANALYSIS OF ANI and PCA 
+
+```{r, echo=FALSE, message=FALSE}
+library(ggplot2)
+library(ggdendro)
+library(factoextra)
+library(patchwork)
+library(ggplotify)
+library(gridExtra)
+
+# Load ANI data
+source("scripts/ani.R")
+
+ani_dist <- 100 - ani
+
+hc <- hclust(
+  as.dist(ani_dist),
+  method = "average"
+)
+
+p98 <- plot(
+  hc,
+  xlab = "",
+  sub = "",
+  ylab = "ANI distance (100 − ANI)"
+)
+
+p98
+
+# Load PCA script
+source("scripts/pca.R")
+
+# Hierarchical clustering
+hc <- hclust(
+  as.dist(100 - ani),
+  method = "average"
+)
+
+# Convert dendrogram to ggplot
+p_ani <- as.ggplot(~plot(
+  hc,
+  xlab = "",
+  sub = "",
+  ylab = "ANI distance (100 − ANI)"
+))
+
+
+
+# PCA plot
+p_pca <- fviz_pca_biplot(
+  pca,
+  repel = TRUE,
+  col.var = "contrib",
+  col.ind = "red",
+  geom.ind = c("point", "text"),
+  pointsize = 3,
+  labelsize = 4,
+  addEllipses = FALSE
+) +
+  stat_ellipse(
+    aes(x = pca$x[,1], y = pca$x[,2]),
+    type = "euclid",
+    level = 3.5,
+    color = "black",
+    linewidth = 0.5
+  ) +
+  theme(
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank()
+  )
+
+
+# Combine
+combined <- p_ani + p_pca +
+  plot_layout(ncol = 2) +
+  plot_annotation(tag_levels = "a")
+
+combined
+
+ggsave(
+  filename = "figures_r/Figure 2.pdf",
+  plot = combined,
+  device = cairo_pdf,
+  width = 14,
+  height = 8,
+  units = "in",
+  dpi = 300
+)
+```
+## Adansonia digitata synteny and Inverted Repeart boundary analysis
+
+
+```{r}
+library(genoPlotR)
+library(ape)
+
+# Load genebank files
+gbk_files <- list.files(
+  "data_1",
+  pattern = "\\.gb$",
+  full.names = TRUE
+)
+dna_segs <- lapply(gbk_files, read_dna_seg_from_genbank)
+names(dna_segs) <- gsub(
+  "\\.gb$",
+  "",
+  basename(gbk_files)
+)
+
+
+# Load phylogenetic tree
+tree <- read.tree("data_1/adansonia_tree.treefile")
+if (!all(tree$tip.label %in% names(dna_segs))) {
+  stop("Tree tip labels do not match GenBank file names")
+}
+dna_segs <- dna_segs[tree$tip.label]
+
+
+# Convert tree for genoPlotR
+phylo_obj <- newick2phylog(write.tree(tree))
+
+
+# Build pairwise comparison
+species <- names(dna_segs)
+comparisons <- lapply(1:(length(species) - 1), function(i) {
+  sp1 <- species[i]
+  sp2 <- species[i + 1]
+  f1 <- paste0(
+    "data_2/blast_results/",
+    sp1,
+    "_vs_",
+    sp2,
+    ".blast"
+  )
+  
+  f2 <- paste0(
+    "data_2/blast_results/",
+    sp2,
+    "_vs_",
+    sp1,
+    ".blast"
+  )
+  
+  if (file.exists(f1)) {
+    
+    read_comparison_from_blast(f1)
+    
+  } else if (file.exists(f2)) {
+    
+    read_comparison_from_blast(f2)
+    
+  } else {
+    
+    stop(
+      paste(
+        "Missing BLAST comparison file:",
+        sp1,
+        "vs",
+        sp2
+      )
+    )
+  }
+})
+
+
+# Colour gene by function
+func_colors <- c(
+  "NDH"       = "#E41A1C",
+  "PSI"       = "#377EB8",
+  "PSII"      = "#4DAF4A",
+  "ATP"       = "#FF7F00",
+  "RPO"       = "#984EA3",
+  "Ribosomal" = "#A65628",
+  "PET"       = "#F781BF",
+  "RBC"       = "#FFFF33",
+  "Other"     = "#999999"
+)
+
+assign_colors <- function(seg) {
+  n <- tolower(seg$name)
+  cols <- ifelse(
+    grepl("^ndh", n), func_colors["NDH"],
+    ifelse(
+      grepl("^psa", n), func_colors["PSI"],
+      ifelse(
+        grepl("^psb", n), func_colors["PSII"],
+        ifelse(
+          grepl("^atp", n), func_colors["ATP"],
+          ifelse(
+            grepl("^rpo", n), func_colors["RPO"],
+            ifelse(
+              grepl("^rpl|^rps", n), func_colors["Ribosomal"],
+              ifelse(
+                grepl("^pet", n), func_colors["PET"],
+                ifelse(
+                  grepl("^rbc", n), func_colors["RBC"],
+                  func_colors["Other"]
+                )
+              )
+            )
+          )
+        )
+      )
+    )
+  )
+  
+  seg$col  <- cols
+  seg$fill <- cols
+  return(seg)
+}
+dna_segs <- lapply(dna_segs, assign_colors)
+
+
+#Colour synteny links
+comparisons <- lapply(comparisons, function(comp) {
+  comp$col <- apply_color_scheme(
+    comp$per_id,
+    "grey90",
+    rng = c(10, 100)
+  )
+  comp$fill <- comp$col
+  return(comp)
+})
+
+
+# Annotate the top genome only
+gene_lengths <- dna_segs[[1]]$end -
+  dna_segs[[1]]$start
+
+# Name only genes longer than 700 bp
+selected <- gene_lengths > 700
+
+annots <- annotation(
+  x1   = middle(dna_segs[[1]])[selected],
+  text = dna_segs[[1]]$name[selected],
+  rot  = 90,
+  col  = "black"
+)
+
+# Create empty annotation for other genomes
+annots_list <- c(
+  list(annots),
+  vector("list", length(dna_segs) - 1)
+)
+
+# Export figure as PDF
+cairo_pdf(
+  "figures_r/Figure 3.pdf",
+  width  = 22,
+  height = 10
+)
+
+# Increase top margin to prevent annotation overlap
+par(mar = c(4, 4, 10, 4))
+
+plot_gene_map(
+  dna_segs          = dna_segs,
+  comparisons       = comparisons,
+  annotations       = annots_list,
+  tree              = phylo_obj,
+  tree_width        = 3,
+  annotation_height = 3,
+  annotation_cex    = 1,
+  dna_seg_labels    = names(dna_segs),
+  dna_seg_label_cex = 1.5,
+  seg_plot_height   = 1,
+  gene_type         = "arrows",
+  scale             = TRUE
+)
+
+dev.off()
+```
+
+# Relative codon usage analysis in comparison with other adansonai species
+```{r}
+source("scripts/rscu_script.R")
+
+# Save high quality PDF
+ggsave(
+  "figures_r/Figure 4.pdf",
+  p,
+  width = 13,
+  height = 8,
+  units = "in",
+  dpi = 300
+)
+
+```
+
+
+## Gene locus identification and characterization-
+
+```{r pressure, echo=FALSE}
+# Load and transform the required data
+gene <- read_csv("data/gene_coordinates_full.csv") |>
+  janitor::clean_names()
+
+sgenes <- gene |>
+  filter(copy_status == "Single")
+
+dgenes <- gene |>
+  filter(copy_status == "Duplicate") |>
+  select(gene) |>
+  unique()
+
+lsc <- gene |>
+  filter(region == "LSC") |>
+  select(gene) |> 
+  unique()
+
+irb <- gene |>
+  filter(region == "IRb") |>
+  select(gene) |>
+  unique()
+
+ira <- gene |>
+  filter(region == "IRa") |>
+  select(gene) |>
+  unique()
+
+ssc <- gene |>
+  filter(region == "SSC") |>
+  select(gene) |>
+  unique()
+
+
+uirs <- bind_rows(ira, irb) |>  
+  distinct(gene, .keep_all = TRUE)
+```
+```{r, echo=FALSE, message=FALSE}
+# Load data---------------------------------------------------------------------
+codon <- read_csv("data/codon_df.csv")
+
+codon$GC12 <- (3 * codon$GC - codon$GC3s) / 2
+codon$AT_bias <- codon$A3s / (codon$A3s + codon$T3s)
+codon$GC_bias <- codon$G3s / (codon$G3s + codon$C3s)
+codon$eNC <- 2 + codon$GC3s + 29 /
+  ((codon$GC3s^2) + ((1 - codon$GC3s)^2))
+codon$ENC_diff_ratio <- (codon$eNC - codon$Nc)/
+  codon$eNC
+
+```
+
+
+# PLOTS
+
+## Nc–GC3 plot 
+```{r, echo=FALSE, message=FALSE}
+library(dplyr)
+library(ggrepel)
+library(ggplot2)
+
+# Select 10 genes with strongest positive codon bias and 5 with weakest
+label_genes <- codon |> 
+  arrange(desc((eNC-Nc)/eNC)) |> 
+  slice_head(n = 10)  |> 
+  bind_rows(
+    codon  |> 
+      arrange((eNC-Nc)/eNC)  |> 
+      slice_head(n = 10)
+  )
+
+# Create theoretical curve
+expected_curve <- data.frame(
+  GC3s = seq(0, 1, length.out = 200)
+)
+
+expected_curve$Nc <- 2 + expected_curve$GC3s +
+  29 / ((expected_curve$GC3s^2) +
+          ((1 - expected_curve$GC3s)^2))
+
+# Plot
+p3 <- ggplot() +
+  geom_line(data = expected_curve,
+            aes(x = GC3s, y = Nc),
+            color = "red", size = 1,
+            linetype = "dashed") +
+  
+  geom_point(data = codon,
+             aes(x = GC3s, y = Nc),
+             color = "black",
+             size = 1.5, alpha = 0.7) +
+  
+  geom_text_repel(data = label_genes,
+                  aes(x = GC3s, y = Nc,
+                      label = Genes),
+                  size = 3) +
+  
+  theme_classic(base_size = 14) +
+  labs(x = expression(GC[3]),
+       y = "NC")
+p3
+```
+
+
+## eNc plot 
+```{r, echo=FALSE, message=FALSE}
+# Compute density-based smooth CDFs --------------------------------------------
+dens_obs <- density(codon$Nc, na.rm = TRUE)
+dens_exp <- density(codon$eNC, na.rm = TRUE)
+
+cdf_obs <- cbind(dens_obs$x, cumsum(dens_obs$y) / sum(dens_obs$y))
+cdf_exp <- cbind(dens_exp$x, cumsum(dens_exp$y) / sum(dens_exp$y))
+
+# Get starting and ending points
+x_min <- min(c(codon$Nc, codon$eNC), na.rm = TRUE)
+x_max <- max(c(codon$Nc, codon$eNC), na.rm = TRUE)
+
+# Extend observed curve to start 5 units before lowest ENC
+x_start_obs <- x_min - 0
+cdf_obs <- rbind(c(x_start_obs, 0), cdf_obs)
+
+# Extend expected curve to start from 0
+cdf_exp <- rbind(c(0, 0), cdf_exp)
+
+# Combine into one data frame for ggplot
+df_cdf <- data.frame(
+  x = c(cdf_obs[,1], cdf_exp[,1]),
+  y = c(cdf_obs[,2], cdf_exp[,2]),
+  Type = rep(c("Observed ENC", "Expected eNC"),
+             each = nrow(cdf_obs))
+)
+
+# Perform Kolmogorov–Smirnov test ---
+ks_result <- ks.test(codon$Nc, codon$eNC)
+p_value <- formatC(ks_result$p.value, format = "e", digits = 2)
+D_value <- round(ks_result$statistic, 3)
+
+# Plot with extended lines and classic theme ---
+p1 <- ggplot(df_cdf, aes(x = x, y = y, color = Type)) +
+  geom_line(size = 0.8) +
+  scale_color_manual(values = c("blue", "red")) +
+  theme_classic(base_size = 14) +
+  labs(
+    x = "Value",
+    y = "Cumulative Distribution Function",
+    subtitle = paste0("K–S Test: D = ", D_value, ",  P = ", p_value)
+  ) +
+  coord_cartesian(xlim = c(x_start_obs, x_max), ylim = c(0, 1)) +
+  theme(
+    legend.position = "right",
+    legend.title = element_blank(),
+    plot.subtitle = element_text(size = 12, face = "italic")
+  )
+
+p1
+```
+## Frequency distribution of eNc values
+
+```{r, echo=FALSE, message=FALSE}
+# Define bin width
+bin_width <- 0.08
+
+# Create histogram 
+hist_data <- hist(
+  codon$ENC_diff_ratio,
+  breaks = seq(
+    floor(min(codon$ENC_diff_ratio,
+              na.rm = TRUE)),
+    ceiling(max(codon$ENC_diff_ratio,
+                na.rm = TRUE)),
+    by = bin_width
+  ),
+  plot = FALSE
+)
+
+# Convert to data frame
+bin_df <- data.frame(
+  Bin_Start = head(hist_data$breaks, -1),
+  Bin_End = tail(hist_data$breaks, -1),
+  Frequency = hist_data$counts
+)
+
+# Calculate percentage
+bin_df$Percentage <- (bin_df$Frequency /
+                        sum(bin_df$Frequency)) * 100
+
+# Remove bins with zero frequency
+bin_df <- subset(bin_df,
+                 Frequency > 0)
+
+# Add midpoint for plotting
+bin_df$Midpoint <- (bin_df$Bin_Start +
+                      bin_df$Bin_End) / 2
+
+# Show cleaned table
+bin_df
+
+# Plot the frequency distribution histogram
+p2 <- ggplot(bin_df, aes(x = Midpoint,
+                         y = Percentage)) +
+  geom_bar(stat = "identity",
+           fill = "grey50", color = "black",
+           width = bin_width * 0.95) +
+  #geom_text(aes(label = sprintf("%.1f", Percentage)),
+           # vjust = -0.3, size = 3.5) +
+  theme_classic(base_size = 14) +
+  labs(
+    x = expression((eNC - NC)/eNC),
+    y = "Frequency"
+  ) +
+  geom_vline(xintercept = 0,
+             linetype = "dashed",
+             color = "black")
+
+p2
+```
+
+## Neutrality plot with regression equation
+### Relationship between GC content at the third codon position
+
+```{r, echo=FALSE, message=FALSE}
+
+p4 <- ggplot(codon, aes(x = GC3s,
+                        y = GC12)) +
+  geom_point(size = 1.5, color = "black",
+             alpha = 0.4) +
+  geom_smooth(method = "lm", color = "black",
+              se = TRUE) +
+  
+# Regression line equation
+  stat_regline_equation(
+    aes(label = paste(..eq.label..,
+                      ..rr.label.., sep = "~~~")),
+    label.x = 0.2, label.y = 0.6,
+    size = 4, parse = TRUE
+  ) +
+  
+# Correlation coefficient and p-value
+  stat_cor(
+    method = "pearson",
+    label.x = 0.2,
+    label.y = 0.55,
+    size = 4
+  )  +
+theme(
+  axis.text.x = element_text(size = 12, angle = 0, hjust = 1),
+  axis.text.y = element_text(size = 12),
+  strip.text.y = element_text(size = 12, face = "bold"),
+  axis.title  = element_text(size = 12, face = "bold")
+) +
+  labs(
+    x = "GC3s",
+    y = "GC12s"
+  ) +
+  
+  theme_classic()
+p4
+```
+```{r}
+library(patchwork)
+library(ggbreak)
+# Cumulative and GC12 graph
+graph2 <- ((p3 | p1) /
+           (p2 | p4)) +
+  plot_annotation(tag_levels = "a")
+
+# Save high quality PDF
+ggsave(
+  "figures_r/Figure 5.pdf",
+  graph2,
+  width = 13,
+  height = 8,
+  units = "in",
+  dpi = 300
+)
+
+graph2
+```
+
+## PR2 Plot
+
+```{r, echo=FALSE, message=FALSE}
+p5 <- ggplot(codon, aes(x = GC_bias, y = AT_bias)) +
+
+  # reference lines
+  geom_vline(xintercept = 0.5,
+             linetype = "dashed",
+             linewidth = 0.6) +
+  geom_hline(yintercept = 0.5,
+             linetype = "dashed",
+             linewidth = 0.6) +
+
+  # points
+  geom_point(size = 2.2, alpha = 0.7, color = "darkblue") +
+
+  # labels
+  labs(
+    x = "G3 / (G3 + C3)",
+    y = "A3 / (A3 + T3)"
+  ) +
+
+  # base theme
+  theme_bw() +
+
+  # theme refinements (clean, manuscript-ready)
+  theme(
+    panel.grid = element_blank(),
+    panel.border = element_rect(linewidth = 0.4,
+                                colour = "grey40"),
+    axis.text = element_text(size = 12),
+    axis.title = element_text(size = 13, face = "bold")
+  ) +
+
+  guides(fill = "none")
+
+p5
+```
+#COA_ANALYSIS
+```{r, echo=FALSE, message=FALSE}
+library(ade4)
+library(ggplot2)
+library(ggrepel)
+library(ggbreak)
+
+coa1 <- read.table("data/coa.txt",
+                   sep = "\t",          
+                   stringsAsFactors = FALSE,
+                   header = TRUE)
+
+codons <- read.table("data/pca.txt",
+                     header = TRUE,
+                     sep = "",  # auto-detect whitespace
+                     stringsAsFactors = FALSE,
+                     fill = TRUE) |>
+  mutate(cond_end = str_extract(Codon, "[ACUG]$"))
+
+
+scale_factor <- 8   # adjust visually if needed
+codons$Axis1 <- codons$Axis1 * scale_factor
+codons$Axis2 <- codons$Axis2 * scale_factor
+
+
+p7 <- ggplot(codons, aes(x = Axis1,
+                         y = Axis2,
+                         color = cond_end)) +
+
+  # reference axes
+  geom_hline(yintercept = 0,
+             linetype = "dashed",
+             linewidth = 0.6) +
+  geom_vline(xintercept = 0,
+             linetype = "dashed",
+             linewidth = 0.6) +
+
+  # points
+  geom_point(size = 2.2, alpha = 0.8) +
+
+  # gene labels
+  #geom_text_repel(
+   ##  size = 3,
+    #### ) +
+
+  # labels
+  labs(
+    x = "Axis 1 (17.48%)",
+    y = "Axis 2 (10.51%)"
+  ) +
+
+  # base theme
+  theme_bw() +
+
+  # theme refinements
+ theme(
+  panel.grid = element_blank(),
+  panel.border = element_rect(linewidth = 0.5, colour = "grey40"),
+  axis.text = element_text(size = 12),
+  axis.title = element_text(size = 13, face = "bold"),
+  plot.title = element_text(face = "bold", hjust = 0.5),
+
+  legend.position = c(0.98, 0.02),
+  legend.justification = c(1, 0),
+  legend.direction = "vertical",
+  legend.background = element_rect(fill = "white", colour = "white"),
+
+  legend.title = element_blank(),             
+  legend.text = element_text(face = "bold")    
+)
+
+p7
+
+```
+
+```{r, echo=FALSE, message=FALSE}
+# Calculate A3(A3+T3) and G3(G3+C3) ratio---------------------------------------
+aa_ratio <- codon
+aa_ratio$A3s <- aa_ratio$A3s/(aa_ratio$A3s+aa_ratio$T3s)
+mean_A3_ratio <- mean(aa_ratio$A3s, na.rm = TRUE)
+sd_A3_ratio   <- sd(aa_ratio$A3s, na.rm = TRUE)
+
+cat("Mean A3/(A3+T3):", round(mean_A3_ratio, 3), "\n")
+cat("Standard Deviation:", round(sd_A3_ratio, 3), "\n")
+
+
+gg_ratio <- codon
+gg_ratio$G3s <- gg_ratio$G3s/(gg_ratio$G3s + gg_ratio$C3s)
+mean_G3_ratio <- mean(gg_ratio$G3s, na.rm = TRUE)
+sd_G3_ratio   <- sd(gg_ratio$G3s, na.rm = TRUE)
+
+cat("Mean G3/(G3+C3):", round(mean_G3_ratio, 3), "\n")
+cat("Standard Deviation:", round(sd_G3_ratio, 3), "\n")
+```
+
+```{r, echo=FALSE, message=FALSE}
+library(patchwork)
+library(ggbreak)
+
+graph3 <- (p5 | p7)+
+  plot_annotation(tag_levels = 'a')
+
+# Save high quality PDF
+ggsave(
+  "figures_r/Figure 6.pdf",
+  graph3,
+  width = 13,
+  height = 8,
+  units = "in",
+  dpi = 300
+)
+
+graph3
+```
+
+# Nucleotide diversity
+```{r, echo=FALSE, message=FALSE}
+
+# Genic regions
+nu_gene <- read.table("data/gene_sort_as_cp_order.txt",
+                     header = TRUE,
+                     sep = "",            
+                     stringsAsFactors = FALSE,
+                     fill = TRUE) |>
+  filter(Pi != 0)
+
+nu_gene$pi <- as.numeric(nu_gene$Pi)
+
+loc <- read.table("data/gene_location.txt",
+                      header = TRUE,
+                      sep = "",            
+                      stringsAsFactors = FALSE,
+                      fill = TRUE)
+
+
+nu_gene <- merge(nu_gene,
+                 loc[, c("Gene", "Location")],
+                 by = "Gene", all.x = TRUE) |>
+  unique() 
+
+
+# intergenic region
+
+nu_igs <- read.table("data/IGS_sort_as_cp_order.txt",
+                      header = TRUE,
+                      sep = "",            
+                      stringsAsFactors = FALSE,
+                      fill = TRUE) |>
+  filter(Pi > 0.000890) |>
+  unique()
+
+nu_igs$pi <- as.numeric(nu_igs$Pi)
+
+# Ensure IGS is treated as a factor in the original order
+nu_igs <- nu_igs |> 
+  mutate(IGS = factor(IGS, levels = unique(IGS)))
+
+data1 <- nu_gene |>
+  rename("Locus" = "Location") |> 
+  mutate(role = "Protein-coding genes") |>
+  unique()
+
+data2 <- nu_igs |>
+  rename("Gene" = "IGS") |> 
+  mutate(role = "Intron and Intergenic region") |>
+  unique()
+
+box2 <- bind_rows(data1, data2) |>
+  unique() |>
+  dplyr::filter(pi <= 0.15)
+```
+
+```{r}
+# Nucleotide diversity
+mean_pi <- mean(nu_gene$pi, na.rm = TRUE)
+sd_pi   <- sd(nu_gene$pi, na.rm = TRUE)
+
+
+p19 <- ggplot(nu_gene, aes(x = Gene, y = pi, color = Location)) +
+  geom_point(size = 2) +
+  geom_hline(yintercept = mean_pi, linetype = "dashed") +
+  geom_text_repel(
+    data = subset(nu_gene, pi > mean_pi),
+    aes(label = Gene),
+    size = 4,
+    nudge_y = 0.001,      # slightly above points
+    angle = 90,
+    max.overlaps = Inf
+  ) +
+  scale_color_manual(values = c("LSC" = "black", "SSC" = "red", "IR" = "blue")) +
+  labs(x = "Gene", y = "Nucleotide Diversity (π)", color = "Genome Region") +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
+
+p19
+```
+
+```{r}
+# Nucleotide diversity
+mean_pie <- mean(nu_igs$pi, na.rm = TRUE)
+sd_pie   <- sd(nu_igs$pi, na.rm = TRUE)
+
+
+
+p21 <- ggplot(nu_igs, aes(x = IGS, y = pi, color = Locus)) +
+  geom_point(size = 2) +
+  geom_hline(yintercept = mean_pie, linetype = "dashed") +
+  geom_text_repel(
+    data = subset(nu_igs, pi > mean_pie),
+    aes(label = IGS),
+    size = 4,
+    nudge_y = 0.001,      # slightly above points
+    angle = 90,
+    max.overlaps = Inf
+  ) +
+  scale_color_manual(values = c("LSC" = "black", "SSC" = "red", "IR" = "blue")) +
+  labs(x = "Gene", y = "Nucleotide Diversity (π)", color = "Genome Region") +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
+p21
+```
+
+```{r}
+# make data
+df1 <- nu_gene |>
+  rename("Locus" = "Location")
+
+df3 <- nu_igs |>
+  rename("Gene" = "IGS")
+
+box1 <- bind_rows(df1, df3) |>
+  unique() |>
+  dplyr::filter(pi <= 0.15)
+  
+
+# Add a 'Type' column to distinguish the two datasets
+box1_mod <- box1 |>  mutate(Type = "Locus")
+box2_mod <- box2 |>  mutate(Type = "Role")
+
+# Combine the datasets
+combined_box <- bind_rows(
+  box1_mod |>  rename(Label = Locus),
+  box2_mod |>  rename(Label = role)
+)
+
+
+combined_box <- combined_box %>%
+  mutate(Label = recode(Label,
+                        "Protein-coding genes" = "CDS",
+                        "Intron and Intergenic region" = "IIR"))
+
+
+# Plot
+p22 <- ggplot(combined_box, aes(x = Label, y = pi, fill = Type)) +
+  geom_boxplot(color = "black") +
+  theme_classic() +
+  labs(x = "", y = "Nucleotide diversity") +
+  scale_fill_manual(values = c("Locus" = "grey70", "Role" = "#3F4403"), guide = "none") +
+  theme(
+    axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)
+  ) +
+  ylim(0, max(combined_box$pi) * 1.05)
+
+p22
+
+```
+
+## Merging the nucleotide diversity graphs
+```{r, echo=FALSE, message=FALSE}
+library(patchwork)
+
+clean_theme <- theme(
+  plot.margin = margin(0, 0, 0, 0),
+  axis.title = element_text(size = 13, color = "black"),
+  axis.text  = element_text(size = 13, color = "black")
+)
+
+# Apply clean theme and remove legend for p19
+p19 <- p19 + clean_theme + theme(legend.position = "none")
+p21 <- p21 + clean_theme
+p22 <- p22 + clean_theme
+# p20 removed
+
+# Layout
+top_row    <- p19 + p22 + plot_layout(widths = c(7, 3))
+bottom_row <- p21  # p20 removed
+
+panel <- top_row / bottom_row +
+  plot_layout(heights = c(1, 1)) +
+  plot_annotation(tag_levels = "a")
+
+panel
+
+# Save high quality PDF
+ggsave(
+  "figures_r/Figure 7.pdf",
+  panel,
+  width = 16,
+  height = 10,
+  units = "in",
+  dpi = 300
+)
+```
+
+
+
+# RNA editing sites
+
+```{r}
+library(tidyverse)
+
+# Load data
+edit <- read_tsv(
+  "data/editing_sites.txt",
+  na = c("", "NA"),
+  show_col_types = FALSE,
+  trim_ws = TRUE
+)
+
+# Standardize column names
+colnames(edit) <- c(
+  "gene",
+  "no",
+  "step",
+  "base_pos",
+  "aa_pos",
+  "codon_pos",
+  "base_change",
+  "codon_change",
+  "aa_change",
+  "label",
+  "silent"
+)
+
+# Fill missing gene names downward
+edit <- edit |>
+  fill(gene)
+
+# Remove duplicated rows
+edit <- edit |>
+  distinct()
+
+# Number of editing sites
+n_total <- nrow(edit)
+
+n_total
+
+
+# Number of genes and editing sites
+gene_counts <- edit |>
+  count(gene, sort = TRUE) |>
+  mutate(percent = n / sum(n) * 100)
+
+gene_counts
+
+
+conv_counts <- edit |>
+  count(base_change) |>
+  mutate(percent = n / sum(n) * 100)
+
+codon_counts <- edit |>
+  count(codon_pos) |> 
+  mutate(percent = n / sum(n) * 100)
+
+aa_counts <- edit |>
+  count(aa_change, sort = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(patchwork)
+library(viridis)
+
+# ---------------------------------------------------------
+# 1. Editing sites per gene
+# ---------------------------------------------------------
+
+p_gene <- gene_counts |>
+  filter(n > 6) |>
+  ggplot(
+    aes(
+      x = reorder(gene, n),
+      y = n,
+      fill = n
+    )
+  ) +
+  geom_col() +
+  scale_fill_viridis_c(
+    option = "turbo",
+    direction = 1
+  ) +
+  scale_y_continuous(expand = c(0, 0)) +
+  coord_flip() +
+  theme_classic() +
+  labs(
+    x = "Gene",
+    y = "Number of editing sites",
+    fill = "Editing sites"
+  )
+
+
+# ---------------------------------------------------------
+# 2. Base conversion types
+# ---------------------------------------------------------
+
+p_conversion <- ggplot(
+  conv_counts,
+  aes(
+    x = base_change,
+    y = n,
+    fill = n
+  )
+) +
+  geom_col(width = 0.6) +
+  scale_fill_viridis_c(
+    option = "turbo",
+    begin = 0,
+  end = 1
+  ) +
+  scale_y_continuous(expand = c(0, 0)) +
+  theme_classic() +
+  labs(
+    x = "Conversion type",
+    y = "Count",
+    fill = "Count"
+  )
+
+
+# ---------------------------------------------------------
+# 3. Codon position
+# ---------------------------------------------------------
+
+p_codon <- ggplot(
+  codon_counts,
+  aes(
+    x = factor(codon_pos),
+    y = n,
+    fill = n
+  )
+) +
+  geom_col(width = 0.6) +
+  scale_fill_viridis_c(
+    option = "turbo",
+    begin = 0,
+  end = 1
+  ) +
+  scale_y_continuous(expand = c(0, 0)) +
+  theme_classic() +
+  labs(
+    x = "Codon position",
+    y = "Editing sites",
+    fill = "Editing sites"
+  )
+
+
+# ---------------------------------------------------------
+# 4. Amino-acid changes
+# ---------------------------------------------------------
+
+p_aa <- aa_counts |>
+  slice_max(n, n = 26) |>
+  ggplot(
+    aes(
+      x = reorder(aa_change, n),
+      y = n,
+      fill = n
+    )
+  ) +
+  geom_col(width = 0.85) +
+  scale_fill_viridis_c(
+    option = "turbo",
+    begin = 0.4,
+  end = 1
+  ) +
+  scale_y_continuous(expand = c(0, 0)) +
+  coord_flip() +
+  theme_classic() +
+  labs(
+    x = "Amino-acid change",
+    y = "Count",
+    fill = "Count"
+  )
+
+
+# ---------------------------------------------------------
+# 5. Silent vs non-silent
+# ---------------------------------------------------------
+
+p_silent <- edit |>
+  mutate(
+    type = ifelse(
+      is.na(silent) | silent == "",
+      "Non-silent",
+      "Silent"
+    )
+  ) |>
+  count(type) |>
+  ggplot(
+    aes(
+      x = type,
+      y = n,
+      fill = n
+    )
+  ) +
+  geom_col(width = 0.6) +
+  scale_fill_viridis_c(
+    option = "D",
+    direction = 1
+  ) +
+  scale_y_continuous(expand = c(0, 0)) +
+  theme_classic() +
+  labs(
+    x = "Editing type",
+    y = "Count",
+    fill = "Count"
+  )
+
+
+# ---------------------------------------------------------
+# 6. Distribution along plastome
+# ---------------------------------------------------------
+
+p_position <- ggplot(
+  edit,
+  aes(
+    x = base_pos
+  )
+) +
+  geom_histogram(
+    binwidth = 200,
+    aes(fill = after_stat(count))
+  ) +
+  scale_fill_viridis_c(
+    option = "D",
+    direction = 1
+  ) +
+  theme_classic() +
+  labs(
+    x = "Nucleotide position",
+    y = "Editing count",
+    fill = "Editing count"
+  )
+
+
+# ---------------------------------------------------------
+# 7. Gene functional groups
+# ---------------------------------------------------------
+
+edit <- edit |>
+  mutate(
+    group = case_when(
+      gene %in% c(
+        "psaA", "psaB", "psaI", "psaJ",
+        "psbB", "psbF", "psbH", "psbJ",
+        "psbK", "psbN", "psbT", "psbZ",
+        "ycf4"
+      ) ~ "Photosystem",
+      str_detect(gene, "^ndh") ~ "NDH",
+      str_detect(gene, "^atp") ~ "ATP synthase",
+      gene %in% c(
+        "petA", "petD", "petG", "petL", "ccsA"
+      ) ~ "Cytochrome",
+      str_detect(gene, "^rps|^rpl") ~ "Ribosomal",
+      str_detect(gene, "^rpo") ~ "RNA polymerase",
+      gene == "rbcL" ~ "Carbon fixation",
+      gene == "accD" ~ "Fatty acid metabolism",
+      gene == "matK" ~ "Intron splicing",
+      gene == "clpP" ~ "Protein quality control",
+      gene == "cemA" ~ "Membrane/transport",
+      gene %in% c("ycf1", "ycf2") ~ "Conserved plastid proteins",
+      TRUE ~ "Other"
+    )
+  )
+
+
+p_group <- edit |>
+  count(group) |>
+  ggplot(
+    aes(
+      x = reorder(group, n),
+      y = n,
+      fill = n
+    )
+  ) +
+  geom_col(width = 0.9) +
+  scale_fill_viridis_c(
+    option = "D",
+    direction = 1
+  ) +
+  coord_flip() +
+  scale_x_discrete(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  theme_classic() +
+  labs(
+    x = "Functional group",
+    y = "Number of editing sites",
+    fill = "Editing sites"
+  )
+
+```
+
+# Combine the plots
+```{r}
+library(patchwork)
+
+design <- "
+ABC
+DE#
+"
+
+combined_editing <-
+  p_conversion +
+  p_gene +
+  p_aa +
+  p_codon +
+  p_group +
+  plot_layout(
+    design = design
+  ) +
+  plot_annotation(
+    tag_levels = "A"
+  ) &
+  theme(
+    legend.position = "none"
+  )
+
+combined_editing
+
+# Save as high-resolution PDF
+ggsave(
+  filename = "figures_r/Figure 8.pdf",
+  plot = combined_editing,
+  width = 12,
+  height = 9,
+  units = "in",
+  device = cairo_pdf,
+  dpi = 300
+)
+```
+
+
+```{r}
+# Selection Analysis - Visualization & Metrics
+library(tidyverse)
+library(ggplot2)
+library(ggrepel)
+library(patchwork)
+library(pheatmap)
+library(RColorBrewer)
+
+
+# Load data
+df <- readr::read_csv("data/all_models_merged.csv")
+
+
+# Prepare M0 data
+m0 <- df %>%
+  filter(model == "M0") %>%
+  mutate(
+    omega_clean = ifelse(omega >= 900, NA, omega),   
+    omega_flag  = ifelse(omega >= 900, "boundary (dS≈0)", 
+                         ifelse(omega > 1,
+                                ">1 (pos.sel.)",
+                                "≤1 (purifying)")),
+    mean_dN = as.numeric(mean_dN),
+    mean_dS = as.numeric(mean_dS),
+    func_group = case_when(
+      grepl("^atp", gene) ~ "ATP synthase",
+      grepl("^ndh", gene) ~ "NDH complex",
+      grepl("^pet", gene) ~ "Electron transport",
+      grepl("^psa", gene) ~ "Photosystem I",
+      grepl("^psb", gene) ~ "Photosystem II",
+      grepl("^rpl", gene) ~ "Ribosomal",
+      grepl("^rps", gene) ~ "Ribosomal",
+      grepl("^rpo", gene) ~ "RNA polymerase",
+      grepl("^rbc", gene) ~ "Carbon fixation",
+      grepl("^ycf", gene) ~ "ycf",
+      grepl("^mat", gene) ~ "Maturase",
+      grepl("^clp", gene) ~ "Protease",
+      TRUE                ~ "Other protein-coding genes"
+    )
+  )
+
+
+# LRT calculations (M1a vs M2a, M7 vs M8 
+lnL_wide <- df %>%
+  select(gene, model, lnL) %>%
+  filter(model %in% c("M0","M1a","M2a","M7","M8")) %>%
+  pivot_wider(names_from = model, values_from = lnL, names_prefix = "lnL_")
+
+lrt <- lnL_wide %>%
+  mutate(
+    LRT_M1a_M2a = 2 * (lnL_M2a - lnL_M1a),
+    p_M1a_M2a   = pchisq(LRT_M1a_M2a, df = 2, lower.tail = FALSE),
+    sig_M1a_M2a = p_M1a_M2a < 0.05,
+    LRT_M7_M8   = 2 * (lnL_M8 - lnL_M7),
+    p_M7_M8     = pchisq(LRT_M7_M8, df = 2, lower.tail = FALSE),
+    sig_M7_M8   = p_M7_M8 < 0.05,
+    pos_sel_both = sig_M1a_M2a & sig_M7_M8
+  ) |>
+  pivot_longer(
+    cols = c(lnL_M0, lnL_M1a, lnL_M2a, lnL_M7, lnL_M8),
+    names_to = "model",
+    values_to = "lnL"
+  ) 
+
+cat("=== LRT Results: M1a vs M2a ===\n")
+lrt %>% filter(sig_M1a_M2a) %>%
+  select(gene, LRT_M1a_M2a, p_M1a_M2a) %>%
+  arrange(p_M1a_M2a) %>% print()
+
+cat("\n=== LRT Results: M7 vs M8 ===\n")
+lrt %>% filter(sig_M7_M8) %>%
+  select(gene, LRT_M7_M8, p_M7_M8) %>%
+  arrange(p_M7_M8) %>% print()
+
+cat("\n=== Genes significant in BOTH tests ===\n")
+lrt %>% filter(pos_sel_both) %>%
+  select(gene, LRT_M1a_M2a, p_M1a_M2a, LRT_M7_M8, p_M7_M8) %>%
+  print()
+```
+
+```{r}
+library(ggbeeswarm)
+library(ggplot2)
+library(dplyr)
+library(ggplot2)
+library(dplyr)
+
+p_omega <- m0 |> 
+  filter(!is.na(omega_clean)) |>
+  mutate(func_group = ifelse(func_group %in% c("Protease",
+                                               "Maturase",
+                                               "ycf",
+                                               "Carbon fixation",
+                                               "Other protein-coding genes"),
+                             "Other protein CDS",
+                             func_group)) |> 
+  
+  ggplot(aes(x = func_group, y = omega_clean, fill = func_group)) +
+  geom_violin(trim = FALSE, alpha = 0.8) +
+  geom_hline(yintercept = 1, linetype = "dashed", color = "red", linewidth = 0.8) +
+  coord_flip() +
+  scale_fill_viridis_d(option = "turbo") +
+  labs(x = "Functional group", y = "Ka/Ks Ratio", fill = "Functional Group") +
+  theme_classic(base_size = 11) +
+  theme(legend.position = "none")+
+  theme(
+    axis.title.x = element_text(face = "bold"),
+    axis.title.y = element_text(face = "bold")
+  )
+
+print(p_omega)
+```
+
+```{r}
+library(tidyverse)
+library(grid) 
+
+# -----------------------------
+# 1. Input data
+# -----------------------------
+df <- readr::read_csv("data/all_models_merged.csv")
+
+# Extract lnL by model
+lnL_wide <- df %>%
+  select(gene, model, lnL) %>%
+  filter(model %in% c("M0","M1a","M2a","M7","M8")) %>%
+  pivot_wider(names_from = model, values_from = lnL, names_prefix = "lnL_")
+
+lrt <- lnL_wide %>%
+  mutate(
+    # M1a vs M2a: df = 2
+    LRT_M1a_M2a = 2 * (lnL_M2a - lnL_M1a),
+    p_M1a_M2a   = pchisq(LRT_M1a_M2a, df = 2, lower.tail = FALSE),
+    sig_M1a_M2a = p_M1a_M2a < 0.05,
+    # M7 vs M8: df = 2
+    LRT_M7_M8   = 2 * (lnL_M8 - lnL_M7),
+    p_M7_M8     = pchisq(LRT_M7_M8, df = 2, lower.tail = FALSE),
+    sig_M7_M8   = p_M7_M8 < 0.05,
+    # Both significant = strong evidence
+    pos_sel_both = sig_M1a_M2a & sig_M7_M8
+  ) |>
+  pivot_longer(
+    cols = c(lnL_M0, lnL_M1a, lnL_M2a, lnL_M7, lnL_M8),
+    names_to = "model",
+    values_to = "lnL"
+  ) 
+
+
+# -----------------------------
+# 2. Reshape to long format
+# -----------------------------
+lrt_data <- lrt 
+
+lrt_long <- data.frame(
+  gene = rep(lrt_data$gene, 2),
+  
+  test = rep(c("M1a_vs_M2a", "M7_vs_M8"),
+             each = nrow(lrt_data)),
+  
+  p = c(lrt_data$p_M1a_M2a,
+        lrt_data$p_M7_M8)
+)
+
+# -----------------------------
+# 3. Compute -log10(p)
+# -----------------------------
+lrt_long <- lrt_long %>%
+  mutate(
+    logP = -log10(p)
+  )
+
+# -----------------------------
+# 4. Rank genes by strongest signal
+# -----------------------------
+gene_rank <- lrt_long %>%
+  group_by(gene) %>%
+  summarise(max_logP = max(logP, na.rm = TRUE)) %>%
+  arrange(desc(max_logP)) %>%
+  mutate(rank = row_number())
+
+# -----------------------------
+# 4b. KEEP ONLY TOP 30 GENES
+# -----------------------------
+top_genes <- gene_rank %>%
+  slice_head(n = 30)
+
+# Filter dataset to top 30 genes only
+lrt_long <- lrt_long %>%
+  filter(gene %in% top_genes$gene)
+
+# Reapply correct ordering
+lrt_long$gene <- factor(lrt_long$gene,
+                        levels = top_genes$gene)
+
+
+# Highlight genes under selection
+highlight_genes <- c("petA", "ycf1", "rbcL", "rpoC1")
+
+lrt_long <- lrt_long %>%
+  mutate(
+    group = ifelse(gene %in% highlight_genes,
+                   "Genes under selection",
+                   "Other genes")
+  )
+
+# Plot graph
+
+P_hierachy <- ggplot(lrt_long,
+       aes(x = gene, y = logP)) +
+  
+  # Points
+  geom_point(aes(color = test, shape = group),
+             size = 2,
+             position = position_dodge(width = 0.5)) +
+  
+  # Significance threshold
+  geom_hline(yintercept = -log10(0.05),
+             linetype = "dashed",
+             color = "grey30",
+             linewidth = 0.2) +
+  
+  # Custom colors for model comparison
+  scale_color_manual(
+    values = c(
+      "M1a_vs_M2a" = "blue",
+      "M7_vs_M8"   = "red"
+    ),
+    labels = c(
+      "M1a_vs_M2a" = "M1a vs M2a",
+      "M7_vs_M8"   = "M7 vs M8"
+    )
+  ) +
+  
+  # Labels
+  labs(
+    x = "Protein Coding Genes",
+    y = expression(-log[10](p-value)),
+    color = "Model comparison",
+    shape = "Gene category"
+  ) +
+  
+  # Theme
+  theme_classic(base_size = 14) +
+  
+  theme(
+    axis.text.x = element_text(angle = 90, hjust = 1),
+    panel.grid.minor = element_blank(),
+    
+    # Bold legend titles
+    legend.title = element_text(face = "bold")
+  ) +
+  theme(
+  legend.position = c(0.97, 0.97),
+  legend.justification = c(1, 1),
+
+  legend.title = element_text(size = 10, face = "bold"),
+  legend.text  = element_text(size = 10),
+
+  legend.key.size = unit(0.35, "cm")
+)
+
+print(P_hierachy)
+```
+
+```{r}
+library(patchwork)
+
+combined_plot <- (p_omega | P_hierachy) +
+  
+  plot_layout(widths = c(0.5, 0.5)) 
+
+# Save high quality PDF
+ggsave(
+  "figures_r/Figure 9.pdf",
+  combined_plot,
+  width = 16,
+  height = 8,
+  units = "in",
+  dpi = 300
+)
+
+print(combined_plot)
+```
+
+```{r, echo=TRUE, warning=TRUE}
+
+# Phylogenetic tree
+library(ape)
+library(phytools)
+library(stringr)
+
+
+ml_46 <- read.tree("data/ml_46.txt")
+bi_46 <- read.tree("data/bi_46.txt")
+
+
+# Plot side by side
+par(mfrow = c(1, 2),
+    mar = c(2, 2, 4, 2))
+
+plotTree(ml_46,
+         direction = "rightwards",
+         ftype = "i",
+         lwd = 1,
+         fsize = 0.7)
+title("a")
+
+plotTree(bi_46,
+         direction = "leftwards",
+         ftype = "i",
+         lwd = 1,
+         fsize = 0.7)
+
+title("b")
+
+
+pdf("figures_r/ML_BI_tree.pdf",
+    width = 14,
+    height = 12)
+
+dev.off()
+```
+
+

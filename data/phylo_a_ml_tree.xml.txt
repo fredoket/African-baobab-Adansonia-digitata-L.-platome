@@ -1,0 +1,1745 @@
+<phyloxml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.phyloxml.org" xsi:schemaLocation="http://www.phyloxml.org http://www.phyloxml.org/1.10/phyloxml.xsd">
+<phylogeny rooted="true"><clade>
+<name>OROOT</name>
+<clade>
+<name>BK067803.1 Scaphium scaphigerum</name>
+<branch_length>0.0061686094</branch_length>
+</clade>
+<clade>
+<branch_length>0.0053985857</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0087738059</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0004394497</branch_length>
+<confidence type="bootstrap">68.4</confidence>
+<clade>
+<branch_length>0.0048097423</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0061082252</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0008782674</branch_length>
+<confidence type="bootstrap">99.9</confidence>
+<clade>
+<name>k303 Adansonia digitata</name>
+<branch_length>0.0062416356</branch_length>
+</clade>
+<clade>
+<name>NC 057439.1 Pachira macrocarpa</name>
+<branch_length>0.0055255775</branch_length>
+</clade>
+</clade><clade>
+<branch_length>0.0122951496</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>NC 037494.1 Bombax ceiba</name>
+<branch_length>0.0001154170</branch_length>
+</clade>
+<clade>
+<name>NC 054162.1 Bombax buonopozense</name>
+<branch_length>0.0009163295</branch_length>
+</clade>
+</clade></clade><clade>
+<branch_length>0.0090316593</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0010078544</branch_length>
+<confidence type="bootstrap">99.9</confidence>
+<clade>
+<branch_length>0.0143274703</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0073907123</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0005740984</branch_length>
+<confidence type="bootstrap">99.9</confidence>
+<clade>
+<branch_length>0.0007516875</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0035597031</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0005418818</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0001213621</branch_length>
+<confidence type="bootstrap">93.5</confidence>
+<clade>
+<branch_length>0.0010868620</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>MG800784.1 Gossypium hirsutum</name>
+<branch_length>0.0002163413</branch_length>
+</clade>
+<clade>
+<name>MK792866.1 Gossypium morrillii</name>
+<branch_length>0.0001633987</branch_length>
+</clade>
+</clade><clade>
+<name>NC 016670.1 Gossypium darwinii</name>
+<branch_length>0.0005759802</branch_length>
+</clade>
+</clade><clade>
+<branch_length>0.0000234380</branch_length>
+<confidence type="bootstrap">30.8</confidence>
+<clade>
+<name>NC 016690.1 Gossypium tomentosum</name>
+<branch_length>0.0004983222</branch_length>
+</clade>
+<clade>
+<name>NC 016711.1 Gossypium mustelinum</name>
+<branch_length>0.0004447798</branch_length>
+</clade>
+</clade></clade><clade>
+<name>NC 016712.1 Gossypium arboreum</name>
+<branch_length>0.0006588248</branch_length>
+</clade>
+</clade><clade>
+<branch_length>0.0037123900</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>NC 018109.1 Gossypium incanum</name>
+<branch_length>0.0005754722</branch_length>
+</clade>
+<clade>
+<branch_length>0.0012606255</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>NC 018110.1 Gossypium somalense</name>
+<branch_length>0.0000419648</branch_length>
+</clade>
+<clade>
+<name>NC 018112.1 Gossypium areysianum</name>
+<branch_length>0.0000741329</branch_length>
+</clade>
+</clade></clade></clade><clade>
+<branch_length>0.0025547338</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0011064207</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0005815887</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0005746548</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0003980380</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>NC 016668.1 Gossypium raimondii</name>
+<branch_length>0.0008134390</branch_length>
+</clade>
+<clade>
+<name>NC 017894.1 Gossypium gossypioides</name>
+<branch_length>0.0010961372</branch_length>
+</clade>
+</clade><clade>
+<branch_length>0.0010981624</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>NC 033396.1 Gossypium aridum</name>
+<branch_length>0.0000564367</branch_length>
+</clade>
+<clade>
+<branch_length>0.0001772236</branch_length>
+<confidence type="bootstrap">99.9</confidence>
+<clade>
+<name>NC 039569.1 Gossypium lobatum</name>
+<branch_length>0.0002280648</branch_length>
+</clade>
+<clade>
+<name>NC 039570.1 Gossypium schwendimanii</name>
+<branch_length>0.0000419828</branch_length>
+</clade>
+</clade></clade></clade><clade>
+<name>NC 033397.1 Gossypium trilobum</name>
+<branch_length>0.0017904691</branch_length>
+</clade>
+</clade><clade>
+<branch_length>0.0013263574</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0003789760</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>NC 026835.1 Gossypium turneri</name>
+<branch_length>0.0015454743</branch_length>
+</clade>
+<clade>
+<name>NC 033333.1 Gossypium harknessii</name>
+<branch_length>0.0000105576</branch_length>
+</clade>
+</clade><clade>
+<name>NC 033400.1 Gossypium armourianum</name>
+<branch_length>0.0011844662</branch_length>
+</clade>
+</clade></clade><clade>
+<name>NC 033395.1 Gossypium davidsonii</name>
+<branch_length>0.0023234105</branch_length>
+</clade>
+</clade></clade><clade>
+<branch_length>0.0039988887</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>NC 018113.1 Gossypium robinsonii</name>
+<branch_length>0.0042530077</branch_length>
+</clade>
+<clade>
+<branch_length>0.0005154729</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0027270577</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>NC 033398.1 Gossypium populifolium</name>
+<branch_length>0.0009696509</branch_length>
+</clade>
+<clade>
+<name>NC 033401.1 Gossypium australe</name>
+<branch_length>0.0009537546</branch_length>
+</clade>
+</clade><clade>
+<name>NC 039568.1 Gossypium nandewarense</name>
+<branch_length>0.0035050205</branch_length>
+</clade>
+</clade></clade></clade><clade>
+<branch_length>0.0035106924</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>NC 070216.1 Thespesia howii</name>
+<branch_length>0.0062207351</branch_length>
+</clade>
+<clade>
+<name>NC 070217.1 Thespesia lampas</name>
+<branch_length>0.0092189495</branch_length>
+</clade>
+</clade></clade><clade>
+<branch_length>0.0104999736</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0112794512</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>NC 053839.1 Alcea rosea</name>
+<branch_length>0.0052232018</branch_length>
+</clade>
+<clade>
+<name>NC 065137.1 Malva crispa</name>
+<branch_length>0.0081456250</branch_length>
+</clade>
+</clade><clade>
+<name>PP897811.1 Abutilon indicum</name>
+<branch_length>0.0211885148</branch_length>
+</clade>
+</clade></clade><clade>
+<branch_length>0.0148877303</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0058961332</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0042176932</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0067766747</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>MZ367751.1 Hibiscus sinosyriacus</name>
+<branch_length>0.0002082873</branch_length>
+</clade>
+<clade>
+<name>NC 062601.1 Hibiscus syriacus</name>
+<branch_length>0.0001381963</branch_length>
+</clade>
+</clade><clade>
+<name>PV666613.1 Hibiscus denudatus</name>
+<branch_length>0.0079012015</branch_length>
+</clade>
+</clade><clade>
+<branch_length>0.0069076974</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>PV666612.1 Hibiscus aponeurus</name>
+<branch_length>0.0037971079</branch_length>
+</clade>
+<clade>
+<branch_length>0.0027518960</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>PV666614.1 Hibiscus fuscus</name>
+<branch_length>0.0015154210</branch_length>
+</clade>
+<clade>
+<name>PV666615.1 Hibiscus micranthus</name>
+<branch_length>0.0022221122</branch_length>
+</clade>
+</clade></clade></clade><clade>
+<branch_length>0.0010241833</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0031066760</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0034467836</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0029266339</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>MZ522720.1 Hibiscus sabdariffa</name>
+<branch_length>0.0053403835</branch_length>
+</clade>
+<clade>
+<name>NC 033399.1 Gossypium nelsonii</name>
+<branch_length>0.0068613438</branch_length>
+</clade>
+</clade><clade>
+<name>NC 054167.1 Hibiscus taiwanensis</name>
+<branch_length>0.0086645409</branch_length>
+</clade>
+</clade><clade>
+<branch_length>0.0064315340</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0003532336</branch_length>
+<confidence type="bootstrap">97.4</confidence>
+<clade>
+<name>NC 060636.1 Hibiscus trionum</name>
+<branch_length>0.0042607521</branch_length>
+</clade>
+<clade>
+<name>NC 087630.1 Thepparatia scandens</name>
+<branch_length>0.0036353181</branch_length>
+</clade>
+</clade><clade>
+<name>NC 087631.1 Cenocentrum tonkinense</name>
+<branch_length>0.0025912823</branch_length>
+</clade>
+</clade></clade><clade>
+<name>PV666616.1 Hibiscus volkensii</name>
+<branch_length>0.0125188344</branch_length>
+</clade>
+</clade></clade></clade></clade><clade>
+<branch_length>0.0007185919</branch_length>
+<confidence type="bootstrap">99.9</confidence>
+<clade>
+<branch_length>0.0006259467</branch_length>
+<confidence type="bootstrap">97.5</confidence>
+<clade>
+<branch_length>0.0051380359</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>NC 045284.1 Craigia yunnanensis</name>
+<branch_length>0.0083479575</branch_length>
+</clade>
+<clade>
+<name>OK624380.1 Tilia endochrysea</name>
+<branch_length>0.0051561539</branch_length>
+</clade>
+</clade><clade>
+<name>NC 054163.1 Excentrodendron hsienmu</name>
+<branch_length>0.0331260757</branch_length>
+</clade>
+</clade><clade>
+<name>NC 065808.1 Diplodiscus trichospermus</name>
+<branch_length>0.0177434767</branch_length>
+</clade>
+</clade></clade><clade>
+<branch_length>0.0015487864</branch_length>
+<confidence type="bootstrap">95</confidence>
+<clade>
+<branch_length>0.0017015842</branch_length>
+<confidence type="bootstrap">95.5</confidence>
+<clade>
+<branch_length>0.0109657449</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0146484593</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0635239936</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0403670867</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0088273339</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0040840537</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0146942755</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0107055871</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0014446668</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0086933052</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0004060409</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0011218317</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0000608571</branch_length>
+<confidence type="bootstrap">85.7</confidence>
+<clade>
+<name>MH169579.1 Tilia amurensis</name>
+<branch_length>0.0001905112</branch_length>
+</clade>
+<clade>
+<branch_length>0.0000103853</branch_length>
+<confidence type="bootstrap">71.6</confidence>
+<clade>
+<branch_length>0.0001570689</branch_length>
+<confidence type="bootstrap">99.8</confidence>
+<clade>
+<name>NC 062378.1 Tilia platyphyllos</name>
+<branch_length>0.0001129073</branch_length>
+</clade>
+<clade>
+<name>NC 065062.1 Tilia cordata</name>
+<branch_length>0.0001617965</branch_length>
+</clade>
+</clade><clade>
+<name>NC 065063.1 Tilia tomentosa</name>
+<branch_length>0.0003922283</branch_length>
+</clade>
+</clade></clade><clade>
+<name>NC 085570.1 Tilia nobilis</name>
+<branch_length>0.0002610560</branch_length>
+</clade>
+</clade><clade>
+<branch_length>0.0015035958</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>NC 065064.1 Tilia americana</name>
+<branch_length>0.0003535826</branch_length>
+</clade>
+<clade>
+<name>OM914582.1 Tilia miqueliana</name>
+<branch_length>0.0000515033</branch_length>
+</clade>
+</clade></clade><clade>
+<name>NC 057237.1 Tilia mongolica</name>
+<branch_length>0.0012097736</branch_length>
+</clade>
+</clade><clade>
+<branch_length>0.0170291223</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0076349550</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0029798840</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0073663057</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>NC 042885.1 Pterospermum kingtungense</name>
+<branch_length>0.0000003795</branch_length>
+</clade>
+<clade>
+<name>NC 054168.1 Pterospermum truncatolobatum</name>
+<branch_length>0.0000707987</branch_length>
+</clade>
+</clade><clade>
+<name>PV738961.1 Pterospermum heterophyllum</name>
+<branch_length>0.0032469242</branch_length>
+</clade>
+</clade><clade>
+<name>NC 057978.1 Pterospermum menglunense</name>
+<branch_length>0.2431800614</branch_length>
+</clade>
+</clade><clade>
+<branch_length>0.0071955633</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>PP840629.1 Corchoropsis crenata</name>
+<branch_length>0.0193635071</branch_length>
+</clade>
+<clade>
+<name>PV275532.1 Dombeya wallichii</name>
+<branch_length>0.0176852721</branch_length>
+</clade>
+</clade></clade></clade><clade>
+<branch_length>0.0058157275</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0080184447</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0015113683</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0074011984</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0070337203</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>NC 036395.1 Firmiana pulcherrima</name>
+<branch_length>0.0021867590</branch_length>
+</clade>
+<clade>
+<name>NC 054165.1 Firmiana colorata</name>
+<branch_length>0.0048590713</branch_length>
+</clade>
+</clade><clade>
+<branch_length>0.0045389339</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0001031602</branch_length>
+<confidence type="bootstrap">92.8</confidence>
+<clade>
+<branch_length>0.0001011602</branch_length>
+<confidence type="bootstrap">86.5</confidence>
+<clade>
+<branch_length>0.0002351214</branch_length>
+<confidence type="bootstrap">99.9</confidence>
+<clade>
+<name>NC 041438.1 Firmiana simplex</name>
+<branch_length>0.0000512415</branch_length>
+</clade>
+<clade>
+<name>NC 061661.1 Firmiana calcarea</name>
+<branch_length>0.0000821552</branch_length>
+</clade>
+</clade><clade>
+<name>NC 057288.1 Firmiana danxiaensis</name>
+<branch_length>0.0005537334</branch_length>
+</clade>
+</clade><clade>
+<name>NC 065869.1 Firmiana hainanensis</name>
+<branch_length>0.0005789945</branch_length>
+</clade>
+</clade><clade>
+<name>NC 083141.1 Firmiana daweishanensis</name>
+<branch_length>0.0005256843</branch_length>
+</clade>
+</clade></clade><clade>
+<name>PQ456199.1 Cola acuminata</name>
+<branch_length>0.0103907902</branch_length>
+</clade>
+</clade><clade>
+<branch_length>0.0003057291</branch_length>
+<confidence type="bootstrap">78.4</confidence>
+<clade>
+<branch_length>0.0010634706</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0083627433</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0044111116</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>NC 037784.1 Heritiera angustata</name>
+<branch_length>0.0004536680</branch_length>
+</clade>
+<clade>
+<branch_length>0.0000325359</branch_length>
+<confidence type="bootstrap">15.5</confidence>
+<clade>
+<name>NC 043923.1 Heritiera littoralis</name>
+<branch_length>0.0007825799</branch_length>
+</clade>
+<clade>
+<name>NC 043924.1 Heritiera fomes</name>
+<branch_length>0.0018668723</branch_length>
+</clade>
+</clade></clade><clade>
+<name>NC 057264.1 Heritiera javanica</name>
+<branch_length>0.0052836644</branch_length>
+</clade>
+</clade><clade>
+<branch_length>0.0050148263</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0149711093</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>NC 053571.1 Sterculia monosperma</name>
+<branch_length>0.0000056141</branch_length>
+</clade>
+<clade>
+<name>NC 063575.1 Sterculia nobilis</name>
+<branch_length>0.0000154045</branch_length>
+</clade>
+</clade><clade>
+<name>NC 088097.1 Sterculia foetida</name>
+<branch_length>0.0182813067</branch_length>
+</clade>
+</clade></clade><clade>
+<name>NC 071829.1 Brachychiton acerifolius</name>
+<branch_length>0.0127916147</branch_length>
+</clade>
+</clade></clade><clade>
+<branch_length>0.0042157126</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0217314102</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0073092208</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0048187789</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0025875581</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0011099921</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>NC 036829.1 Durio zibethinus</name>
+<branch_length>0.0027915150</branch_length>
+</clade>
+<clade>
+<name>PP668203.1 Durio kutejensis</name>
+<branch_length>0.0029129725</branch_length>
+</clade>
+</clade><clade>
+<branch_length>0.0007297489</branch_length>
+<confidence type="bootstrap">99.8</confidence>
+<clade>
+<name>PP668202.1 Durio graveolens</name>
+<branch_length>0.0026495916</branch_length>
+</clade>
+<clade>
+<branch_length>0.0005383873</branch_length>
+<confidence type="bootstrap">95.9</confidence>
+<clade>
+<name>PP668205.1 Durio oxleyanus</name>
+<branch_length>0.0021659185</branch_length>
+</clade>
+<clade>
+<name>PP668207.1 Durio lowianus</name>
+<branch_length>0.0024420611</branch_length>
+</clade>
+</clade></clade></clade><clade>
+<name>NC 073110.1 Durio dulcis</name>
+<branch_length>0.1603434515</branch_length>
+</clade>
+</clade><clade>
+<name>PP668204.1 Durio testudinarius</name>
+<branch_length>0.0170157036</branch_length>
+</clade>
+</clade><clade>
+<name>NC 086662.1 Kostermansia malayana</name>
+<branch_length>0.0128129218</branch_length>
+</clade>
+</clade><clade>
+<branch_length>0.0053808520</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0124286569</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0008604805</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>NC 063747.1 Reevesia orbicularifolia</name>
+<branch_length>0.0007594796</branch_length>
+</clade>
+<clade>
+<branch_length>0.0008848988</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>NC 085247.1 Reevesia glaucophylla</name>
+<branch_length>0.0002410457</branch_length>
+</clade>
+<clade>
+<name>NC 085248.1 Reevesia membranacea</name>
+<branch_length>0.0000701063</branch_length>
+</clade>
+</clade></clade><clade>
+<branch_length>0.0015669195</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>NC 085245.1 Reevesia longipetiolata</name>
+<branch_length>0.0000845915</branch_length>
+</clade>
+<clade>
+<name>NC 085246.1 Reevesia tomentosa</name>
+<branch_length>0.0000695439</branch_length>
+</clade>
+</clade></clade><clade>
+<name>NC 085352.1 Helicteres hirsuta</name>
+<branch_length>0.0524963618</branch_length>
+</clade>
+</clade></clade></clade></clade><clade>
+<branch_length>0.0037235466</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0003979428</branch_length>
+<confidence type="bootstrap">92.8</confidence>
+<clade>
+<branch_length>0.0003281897</branch_length>
+<confidence type="bootstrap">69.2</confidence>
+<clade>
+<branch_length>0.0105225368</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0008282809</branch_length>
+<confidence type="bootstrap">97.2</confidence>
+<clade>
+<branch_length>0.0108428804</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0108971422</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0058485953</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0002723094</branch_length>
+<confidence type="bootstrap">98.1</confidence>
+<clade>
+<branch_length>0.0039931673</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>MK860036.1 Malva parviflora</name>
+<branch_length>0.0003359415</branch_length>
+</clade>
+<clade>
+<name>NC 086774.1 Malva cathayensis</name>
+<branch_length>0.0009307680</branch_length>
+</clade>
+</clade><clade>
+<branch_length>0.0013074103</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>NC 049129.1 Malva wigandii</name>
+<branch_length>0.0015189063</branch_length>
+</clade>
+<clade>
+<name>NC 063267.1 Malva canariensis</name>
+<branch_length>0.0015830625</branch_length>
+</clade>
+</clade></clade><clade>
+<name>NC 063266.1 Navaea phoenicea</name>
+<branch_length>0.0013143820</branch_length>
+</clade>
+</clade><clade>
+<branch_length>0.0064847917</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>MK860037.1 Malvastrum coromandelianum</name>
+<branch_length>0.0031132362</branch_length>
+</clade>
+<clade>
+<name>NC 064374.1 Sida acuta</name>
+<branch_length>0.0041226575</branch_length>
+</clade>
+</clade></clade><clade>
+<branch_length>0.0108502715</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0157327613</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>NC 051877.1 Sida szechuensis</name>
+<branch_length>0.0013763824</branch_length>
+</clade>
+<clade>
+<name>NC 080995.1 Sida fallax</name>
+<branch_length>0.0008235732</branch_length>
+</clade>
+</clade><clade>
+<branch_length>0.0040448954</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>NC 053702.1 Abutilon theophrasti</name>
+<branch_length>0.0081944190</branch_length>
+</clade>
+<clade>
+<branch_length>0.0072319842</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>NC 058743.1 Callianthe picta</name>
+<branch_length>0.0002169818</branch_length>
+</clade>
+<clade>
+<name>NC 077649.1 Abutilon megapotamicum</name>
+<branch_length>0.0000768765</branch_length>
+</clade>
+</clade></clade></clade></clade><clade>
+<branch_length>0.0143255561</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0079320017</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0005283260</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0006990574</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0019188607</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0015238175</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>NC 008641.1 Gossypium barbadense</name>
+<branch_length>0.0036860561</branch_length>
+</clade>
+<clade>
+<name>NC 015204.1 Gossypium thurberi</name>
+<branch_length>0.0010858467</branch_length>
+</clade>
+</clade><clade>
+<name>NC 023216.1 Gossypium longicalyx</name>
+<branch_length>0.0030590977</branch_length>
+</clade>
+</clade><clade>
+<name>NC 023217.1 Gossypium stocksii</name>
+<branch_length>0.0043540727</branch_length>
+</clade>
+</clade><clade>
+<name>NC 023215.1 Gossypium herbaceum</name>
+<branch_length>0.0051670509</branch_length>
+</clade>
+</clade><clade>
+<branch_length>0.0010638488</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>NC 023213.1 Gossypium anomalum</name>
+<branch_length>0.0034905069</branch_length>
+</clade>
+<clade>
+<name>NC 023214.1 Gossypium bickii</name>
+<branch_length>0.0064072817</branch_length>
+</clade>
+</clade></clade><clade>
+<name>NC 048518.1 Thespesia populnea</name>
+<branch_length>0.0090173609</branch_length>
+</clade>
+</clade></clade><clade>
+<branch_length>0.0154176003</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0040468626</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0041625955</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0058318528</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>NC 030195.1 Talipariti hamabo</name>
+<branch_length>0.0003697857</branch_length>
+</clade>
+<clade>
+<name>NC 053627.1 Talipariti tiliaceum</name>
+<branch_length>0.0004713196</branch_length>
+</clade>
+</clade><clade>
+<branch_length>0.0032874026</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>NC 045873.1 Hibiscus cannabinus</name>
+<branch_length>0.0069505999</branch_length>
+</clade>
+<clade>
+<name>NC 054171.1 Urena procumbens</name>
+<branch_length>0.0144907962</branch_length>
+</clade>
+</clade></clade><clade>
+<branch_length>0.0065511397</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0006201320</branch_length>
+<confidence type="bootstrap">99.9</confidence>
+<clade>
+<branch_length>0.0005203595</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0010006018</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0030359737</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>NC 035234.1 Abelmoschus esculentus</name>
+<branch_length>0.0014530900</branch_length>
+</clade>
+<clade>
+<branch_length>0.0006532876</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>NC 053353.1 Abelmoschus manihot</name>
+<branch_length>0.0009762283</branch_length>
+</clade>
+<clade>
+<branch_length>0.0004056390</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>NC 053354.1 Abelmoschus sagittifolius</name>
+<branch_length>0.0004343995</branch_length>
+</clade>
+<clade>
+<name>NC 053355.1 Abelmoschus moschatus</name>
+<branch_length>0.0003624696</branch_length>
+</clade>
+</clade></clade></clade><clade>
+<name>NC 066143.1 Hibiscus mutabilis</name>
+<branch_length>0.0016308174</branch_length>
+</clade>
+</clade><clade>
+<name>NC 066439.1 Malvaviscus penduliflorus</name>
+<branch_length>0.0058909066</branch_length>
+</clade>
+</clade><clade>
+<branch_length>0.0047654819</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>NC 068824.1 Hibiscus moscheutos</name>
+<branch_length>0.0004494464</branch_length>
+</clade>
+<clade>
+<name>OK336487.1 Hibiscus coccineus</name>
+<branch_length>0.0004974581</branch_length>
+</clade>
+</clade></clade><clade>
+<name>OK336488.1 Kosteletzkya pentacarpos</name>
+<branch_length>0.0069117659</branch_length>
+</clade>
+</clade></clade><clade>
+<name>NC 042239.1 Hibiscus rosa-sinensis</name>
+<branch_length>0.0201284733</branch_length>
+</clade>
+</clade></clade><clade>
+<branch_length>0.0046707391</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0046350861</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0003548218</branch_length>
+<confidence type="bootstrap">99.8</confidence>
+<clade>
+<branch_length>0.0018482116</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0000440328</branch_length>
+<confidence type="bootstrap">94.1</confidence>
+<clade>
+<name>MT052998.1 Adansonia digitata</name>
+<branch_length>0.0000211160</branch_length>
+</clade>
+<clade>
+<name>MT053001.1 Adansonia kilima</name>
+<branch_length>0.0000421801</branch_length>
+</clade>
+</clade><clade>
+<name>K404 Adansonia digitata</name>
+<branch_length>0.0000622392</branch_length>
+</clade>
+</clade><clade>
+<name>MT053000.1 Adansonia gregorii</name>
+<branch_length>0.0027837348</branch_length>
+</clade>
+</clade><clade>
+<branch_length>0.0001209054</branch_length>
+<confidence type="bootstrap">95.6</confidence>
+<clade>
+<branch_length>0.0007989285</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>MT052999.1 Adansonia grandidieri</name>
+<branch_length>0.0009883518</branch_length>
+</clade>
+<clade>
+<branch_length>0.0002954230</branch_length>
+<confidence type="bootstrap">99.9</confidence>
+<clade>
+<branch_length>0.0003116729</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0005065047</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>MT053002.1 Adansonia madagascariensis</name>
+<branch_length>0.0005081200</branch_length>
+</clade>
+<clade>
+<name>MT053003.1 Adansonia perrieri</name>
+<branch_length>0.0003472972</branch_length>
+</clade>
+</clade><clade>
+<name>MT053004.1 Adansonia rubrostipa</name>
+<branch_length>0.0007831534</branch_length>
+</clade>
+</clade><clade>
+<name>MT053006.1 Adansonia za</name>
+<branch_length>0.0011559864</branch_length>
+</clade>
+</clade></clade><clade>
+<name>MT053005.1 Adansonia suarezensis</name>
+<branch_length>0.0014210526</branch_length>
+</clade>
+</clade></clade><clade>
+<name>NC 057077.1 Ceiba speciosa</name>
+<branch_length>0.0064592127</branch_length>
+</clade>
+</clade></clade><clade>
+<name>NC 084136.1 Ochroma pyramidale</name>
+<branch_length>0.0089663071</branch_length>
+</clade>
+</clade><clade>
+<name>PV236216.1 Fremontodendron californicum</name>
+<branch_length>0.0068058753</branch_length>
+</clade>
+</clade></clade><clade>
+<branch_length>0.0399938611</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0062858511</branch_length>
+<confidence type="bootstrap">97.5</confidence>
+<clade>
+<branch_length>0.1761980499</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0248087524</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0005863767</branch_length>
+<confidence type="bootstrap">64.9</confidence>
+<clade>
+<branch_length>0.0046369742</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>MH791329.1 Hopea dryobalanoides</name>
+<branch_length>0.0051990727</branch_length>
+</clade>
+<clade>
+<name>NC 052744.1 Hopea reticulata</name>
+<branch_length>0.0039952772</branch_length>
+</clade>
+</clade><clade>
+<branch_length>0.0016917163</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0062345472</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>MH791330.1 Parashorea macrophylla</name>
+<branch_length>0.0086114799</branch_length>
+</clade>
+<clade>
+<name>NC 046579.1 Parashorea chinensis</name>
+<branch_length>0.0096864073</branch_length>
+</clade>
+</clade><clade>
+<name>NC 040965.1 Shorea zeylanica</name>
+<branch_length>0.0133379926</branch_length>
+</clade>
+</clade></clade><clade>
+<name>MZ160995.1 Anthoshorea henryana</name>
+<branch_length>0.0114294483</branch_length>
+</clade>
+</clade><clade>
+<branch_length>0.0214980709</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0653885659</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0134020278</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0199720892</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0007347182</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0006744605</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0017718433</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>MZ160991.1 Dipterocarpus gracilis</name>
+<branch_length>0.0000380165</branch_length>
+</clade>
+<clade>
+<name>NC 067812.1 Dipterocarpus retusus</name>
+<branch_length>0.0000402402</branch_length>
+</clade>
+</clade><clade>
+<branch_length>0.0002279820</branch_length>
+<confidence type="bootstrap">88.7</confidence>
+<clade>
+<name>NC 046842.1 Dipterocarpus turbinatus</name>
+<branch_length>0.0027472693</branch_length>
+</clade>
+<clade>
+<name>NC 065503.1 Dipterocarpus hasseltii</name>
+<branch_length>0.0023201085</branch_length>
+</clade>
+</clade></clade><clade>
+<name>NC 058777.1 Dipterocarpus alatus</name>
+<branch_length>0.0020808030</branch_length>
+</clade>
+</clade><clade>
+<name>NC 081465.1 Dipterocarpus littoralis</name>
+<branch_length>0.0030339616</branch_length>
+</clade>
+</clade><clade>
+<branch_length>0.0225961475</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0032618775</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0004736079</branch_length>
+<confidence type="bootstrap">99.3</confidence>
+<clade>
+<branch_length>0.0002491890</branch_length>
+<confidence type="bootstrap">99.3</confidence>
+<clade>
+<name>NC 041485.1 Vatica mangachapoi</name>
+<branch_length>0.0006985409</branch_length>
+</clade>
+<clade>
+<name>NC 051531.1 Vatica guangxiensis</name>
+<branch_length>0.0004491868</branch_length>
+</clade>
+</clade><clade>
+<name>NC 054172.1 Vatica odorata</name>
+<branch_length>0.0011966710</branch_length>
+</clade>
+</clade><clade>
+<name>NC 058773.1 Vatica xishuangbannaensis</name>
+<branch_length>0.0037495743</branch_length>
+</clade>
+</clade><clade>
+<branch_length>0.0021576250</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>NC 058774.1 Vatica rassak</name>
+<branch_length>0.0028246786</branch_length>
+</clade>
+<clade>
+<branch_length>0.0008111771</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>NC 071231.1 Vatica bantamensis</name>
+<branch_length>0.0017647309</branch_length>
+</clade>
+<clade>
+<name>PV605346.1 Vatica javanica</name>
+<branch_length>0.0016372868</branch_length>
+</clade>
+</clade></clade></clade></clade><clade>
+<branch_length>0.0029013498</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0034909623</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>MZ160993.1 Hopea mollissima</name>
+<branch_length>0.0021081890</branch_length>
+</clade>
+<clade>
+<branch_length>0.0022910880</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>MZ160994.1 Hopea odorata</name>
+<branch_length>0.0044244053</branch_length>
+</clade>
+<clade>
+<name>NC 044642.1 Hopea hainanensis</name>
+<branch_length>0.0023241827</branch_length>
+</clade>
+</clade></clade><clade>
+<name>NC 041191.1 Neobalanocarpus heimii</name>
+<branch_length>0.0057961925</branch_length>
+</clade>
+</clade></clade><clade>
+<name>MZ160996.1 Anthoshorea roxburghii</name>
+<branch_length>0.0519584856</branch_length>
+</clade>
+</clade></clade><clade>
+<name>NC 060629.1 Dialyceras coriaceum</name>
+<branch_length>0.0794714167</branch_length>
+</clade>
+</clade><clade>
+<branch_length>0.0048297178</branch_length>
+<confidence type="bootstrap">98.7</confidence>
+<clade>
+<branch_length>0.0725470659</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0462260133</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0139672283</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0039065519</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0106062819</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0166573260</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0041038187</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0068991736</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>MN201546.1 Daphne laureola</name>
+<branch_length>0.0057886410</branch_length>
+</clade>
+<clade>
+<branch_length>0.0004935180</branch_length>
+<confidence type="bootstrap">99.9</confidence>
+<clade>
+<branch_length>0.0025694250</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0027190957</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0000213745</branch_length>
+<confidence type="bootstrap">29.9</confidence>
+<clade>
+<branch_length>0.0010160346</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0000418352</branch_length>
+<confidence type="bootstrap">78.2</confidence>
+<clade>
+<name>NC 042950.1 Daphne tangutica</name>
+<branch_length>0.0002748919</branch_length>
+</clade>
+<clade>
+<name>NC 057149.1 Daphne depauperata</name>
+<branch_length>0.0003151991</branch_length>
+</clade>
+</clade><clade>
+<name>NC 057148.1 Daphne retusa</name>
+<branch_length>0.0002137273</branch_length>
+</clade>
+</clade><clade>
+<branch_length>0.0001157196</branch_length>
+<confidence type="bootstrap">98</confidence>
+<clade>
+<name>NC 056317.1 Daphne acutiloba</name>
+<branch_length>0.0016111181</branch_length>
+</clade>
+<clade>
+<branch_length>0.0007732222</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>NC 056320.1 Daphne feddei</name>
+<branch_length>0.0003142823</branch_length>
+</clade>
+<clade>
+<name>NC 060829.1 Daphne odora</name>
+<branch_length>0.0005380850</branch_length>
+</clade>
+</clade></clade></clade><clade>
+<branch_length>0.0001990593</branch_length>
+<confidence type="bootstrap">98.7</confidence>
+<clade>
+<name>NC 060495.1 Daphne kiusiana</name>
+<branch_length>0.0019023112</branch_length>
+</clade>
+<clade>
+<name>NC 060562.1 Daphne papyracea</name>
+<branch_length>0.0017460780</branch_length>
+</clade>
+</clade></clade><clade>
+<name>NC 044085.1 Daphne giraldii</name>
+<branch_length>0.0050963419</branch_length>
+</clade>
+</clade><clade>
+<branch_length>0.0100736680</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>PV752464.1 Daphne kamtschatica</name>
+<branch_length>0.0005247333</branch_length>
+</clade>
+<clade>
+<name>PV752465.1 Daphne pseudomezereum</name>
+<branch_length>0.0006800684</branch_length>
+</clade>
+</clade></clade></clade><clade>
+<branch_length>0.0028643563</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>NC 058916.1 Diarthron linifolium</name>
+<branch_length>0.0081067735</branch_length>
+</clade>
+<clade>
+<name>NC 063827.1 Diarthron tianschanicum</name>
+<branch_length>0.0131691611</branch_length>
+</clade>
+</clade></clade><clade>
+<branch_length>0.0082657598</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0022138762</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0009671432</branch_length>
+<confidence type="bootstrap">99.7</confidence>
+<clade>
+<name>MT790358.1 Stellera chamaejasme</name>
+<branch_length>0.0048742657</branch_length>
+</clade>
+<clade>
+<branch_length>0.0045807312</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>NC 057998.1 Wikstroemia canescens</name>
+<branch_length>0.0005096305</branch_length>
+</clade>
+<clade>
+<name>NC 058000.1 Wikstroemia alternifolia</name>
+<branch_length>0.0004424347</branch_length>
+</clade>
+</clade></clade><clade>
+<branch_length>0.0117171501</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>OR386932.1 Wikstroemia lichiangensis</name>
+<branch_length>0.0062436133</branch_length>
+</clade>
+<clade>
+<name>OR386934.1 Wikstroemia pampaninii</name>
+<branch_length>0.0105131397</branch_length>
+</clade>
+</clade></clade><clade>
+<branch_length>0.0005086271</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0000884088</branch_length>
+<confidence type="bootstrap">94.5</confidence>
+<clade>
+<branch_length>0.0002328163</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0053347544</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>NC 045890.1 Wikstroemia chamaedaphne</name>
+<branch_length>0.0081688536</branch_length>
+</clade>
+<clade>
+<name>NC 063316.1 Wikstroemia micrantha</name>
+<branch_length>0.0054145048</branch_length>
+</clade>
+</clade><clade>
+<branch_length>0.0001542610</branch_length>
+<confidence type="bootstrap">14.9</confidence>
+<clade>
+<branch_length>0.0004767396</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0021003729</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>NC 057997.1 Wikstroemia scytophylla</name>
+<branch_length>0.0044002243</branch_length>
+</clade>
+<clade>
+<name>NC 057999.1 Wikstroemia dolichantha</name>
+<branch_length>0.0049475882</branch_length>
+</clade>
+</clade><clade>
+<name>NC 062858.1 Daphne aurantiaca</name>
+<branch_length>0.0057277320</branch_length>
+</clade>
+</clade><clade>
+<name>OR386931.1 Wikstroemia delavayi</name>
+<branch_length>0.0062543071</branch_length>
+</clade>
+</clade></clade><clade>
+<branch_length>0.0001129373</branch_length>
+<confidence type="bootstrap">90.3</confidence>
+<clade>
+<branch_length>0.0017798003</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0032547590</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>NC 045891.1 Daphne genkwa</name>
+<branch_length>0.0135066184</branch_length>
+</clade>
+<clade>
+<name>NC 068837.1 Wikstroemia monnula</name>
+<branch_length>0.0062251412</branch_length>
+</clade>
+</clade><clade>
+<branch_length>0.0065395608</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>NC 046389.1 Wikstroemia indica</name>
+<branch_length>0.0048570127</branch_length>
+</clade>
+<clade>
+<name>OR386933.1 Wikstroemia nutans</name>
+<branch_length>0.0021892718</branch_length>
+</clade>
+</clade></clade><clade>
+<branch_length>0.0020855036</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>NC 057996.1 Wikstroemia capitata</name>
+<branch_length>0.0057040865</branch_length>
+</clade>
+<clade>
+<name>OR386935.1 Wikstroemia pilosa</name>
+<branch_length>0.0046884023</branch_length>
+</clade>
+</clade></clade></clade><clade>
+<name>OR386937.1 Wikstroemia trichotoma</name>
+<branch_length>0.0071885749</branch_length>
+</clade>
+</clade></clade></clade><clade>
+<branch_length>0.0050984468</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0029659486</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0067828893</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>NC 050847.1 Edgeworthia chrysantha</name>
+<branch_length>0.0042728825</branch_length>
+</clade>
+<clade>
+<name>NC 058013.1 Edgeworthia gardneri</name>
+<branch_length>0.0043141945</branch_length>
+</clade>
+</clade><clade>
+<name>NC 068716.1 Daphne championii</name>
+<branch_length>0.0184010436</branch_length>
+</clade>
+</clade><clade>
+<name>NC 064103.1 Rhamnoneuron balansae</name>
+<branch_length>0.0145399916</branch_length>
+</clade>
+</clade></clade><clade>
+<name>NC 052861.1 Phaleria macrocarpa</name>
+<branch_length>0.0290432467</branch_length>
+</clade>
+</clade><clade>
+<name>NC 038153.1 Pimelea aquilonia</name>
+<branch_length>0.1359005090</branch_length>
+</clade>
+</clade><clade>
+<branch_length>0.1214759920</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0008938177</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>MW557323.1 Gyrinops walla</name>
+<branch_length>0.0026932982</branch_length>
+</clade>
+<clade>
+<name>NC 065048.1 Gyrinops vidalii</name>
+<branch_length>0.0022428378</branch_length>
+</clade>
+</clade><clade>
+<branch_length>0.0013094830</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0002352746</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0002219729</branch_length>
+<confidence type="bootstrap">99.6</confidence>
+<clade>
+<branch_length>0.0009190526</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0003582241</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>NC 029243.1 Aquilaria sinensis</name>
+<branch_length>0.0006441208</branch_length>
+</clade>
+<clade>
+<branch_length>0.0002260610</branch_length>
+<confidence type="bootstrap">97.3</confidence>
+<clade>
+<name>NC 036940.1 Aquilaria yunnanensis</name>
+<branch_length>0.0001655302</branch_length>
+</clade>
+<clade>
+<name>NC 065042.1 Aquilaria rugosa</name>
+<branch_length>0.0001230059</branch_length>
+</clade>
+</clade></clade><clade>
+<name>NC 065040.1 Aquilaria agallochum</name>
+<branch_length>0.0005712385</branch_length>
+</clade>
+</clade><clade>
+<branch_length>0.0003775706</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0009661722</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>NC 043844.1 Aquilaria crassna</name>
+<branch_length>0.0000446881</branch_length>
+</clade>
+<clade>
+<name>NC 052859.1 Aquilaria subintegra</name>
+<branch_length>0.0000321914</branch_length>
+</clade>
+</clade><clade>
+<name>NC 052858.1 Aquilaria rostrata</name>
+<branch_length>0.0015020187</branch_length>
+</clade>
+</clade></clade><clade>
+<branch_length>0.0003921706</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0007186190</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0004731226</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0002054801</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0001134070</branch_length>
+<confidence type="bootstrap">99.3</confidence>
+<clade>
+<branch_length>0.0125020660</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>NC 041117.1 Aquilaria malaccensis</name>
+<branch_length>0.0001049102</branch_length>
+</clade>
+<clade>
+<name>OR771713.1 Aquilaria banaensis</name>
+<branch_length>0.0025867312</branch_length>
+</clade>
+</clade><clade>
+<name>NC 052855.1 Aquilaria beccariana</name>
+<branch_length>0.0000343405</branch_length>
+</clade>
+</clade><clade>
+<name>NC 065041.1 Aquilaria cumingiana</name>
+<branch_length>0.0002994800</branch_length>
+</clade>
+</clade><clade>
+<name>NC 052857.1 Aquilaria microcarpa</name>
+<branch_length>0.0004655183</branch_length>
+</clade>
+</clade><clade>
+<name>NC 065043.1 Gyrinops caudata</name>
+<branch_length>0.0007626987</branch_length>
+</clade>
+</clade><clade>
+<name>NC 052856.1 Aquilaria hirta</name>
+<branch_length>0.0011600426</branch_length>
+</clade>
+</clade></clade><clade>
+<branch_length>0.0006580108</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0011984786</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>NC 065044.1 Gyrinops ledermannii</name>
+<branch_length>0.0004675774</branch_length>
+</clade>
+<clade>
+<name>NC 065045.1 Gyrinops moluccana</name>
+<branch_length>0.0006677392</branch_length>
+</clade>
+</clade><clade>
+<branch_length>0.0000918078</branch_length>
+<confidence type="bootstrap">59.3</confidence>
+<clade>
+<name>NC 065046.1 Gyrinops salicifolia</name>
+<branch_length>0.0010926163</branch_length>
+</clade>
+<clade>
+<name>NC 065047.1 Gyrinops versteegii</name>
+<branch_length>0.0012797118</branch_length>
+</clade>
+</clade></clade></clade></clade></clade><clade>
+<branch_length>0.0283392675</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>NC 052860.1 Gonystylus affinis</name>
+<branch_length>0.0011185575</branch_length>
+</clade>
+<clade>
+<name>PQ046881.1 Gonystylus bancanus</name>
+<branch_length>0.0010961587</branch_length>
+</clade>
+</clade></clade><clade>
+<branch_length>0.0741671566</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>NC 043925.1 Heritiera elata</name>
+<branch_length>0.1158024789</branch_length>
+</clade>
+<clade>
+<name>NC 057187.1 Dryobalanops aromatica</name>
+<branch_length>0.1947872021</branch_length>
+</clade>
+</clade></clade></clade></clade><clade>
+<branch_length>0.0012494648</branch_length>
+<confidence type="bootstrap">99.9</confidence>
+<clade>
+<branch_length>0.0019768047</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0092942068</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0022923852</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>NC 014676.2 Theobroma cacao</name>
+<branch_length>0.0003081123</branch_length>
+</clade>
+<clade>
+<name>NC 054233.1 Theobroma grandiflorum</name>
+<branch_length>0.0002112164</branch_length>
+</clade>
+</clade><clade>
+<name>NC 073584.1 Theobroma bicolor</name>
+<branch_length>0.0032310612</branch_length>
+</clade>
+</clade><clade>
+<name>PQ997912.1 Abroma augustum</name>
+<branch_length>0.0236896091</branch_length>
+</clade>
+</clade><clade>
+<name>NC 081971.1 Melochia corchorifolia</name>
+<branch_length>0.0495723469</branch_length>
+</clade>
+</clade></clade><clade>
+<branch_length>0.0036839192</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>NC 054164.1 Colona floribunda</name>
+<branch_length>0.0300528621</branch_length>
+</clade>
+<clade>
+<name>PV550975.1 Triumfetta tomentosa</name>
+<branch_length>0.0715437241</branch_length>
+</clade>
+</clade></clade><clade>
+<name>PV096988.1 Grewia tembensis</name>
+<branch_length>0.0960925231</branch_length>
+</clade>
+</clade><clade>
+<branch_length>0.0033744410</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0356633819</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>NC 044467.1 Corchorus capsularis</name>
+<branch_length>0.0151409189</branch_length>
+</clade>
+<clade>
+<name>NC 044468.1 Corchorus olitorius</name>
+<branch_length>0.0142021162</branch_length>
+</clade>
+</clade><clade>
+<branch_length>0.0064526438</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<branch_length>0.0095166252</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>NC 054166.1 Grewia chungii</name>
+<branch_length>0.0067870335</branch_length>
+</clade>
+<clade>
+<name>PP003957.1 Microcos paniculata</name>
+<branch_length>0.0107663037</branch_length>
+</clade>
+</clade><clade>
+<name>ON882041.1 Grewia biloba</name>
+<branch_length>0.0219536012</branch_length>
+</clade>
+</clade></clade></clade><clade>
+<branch_length>0.0406537827</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>NC 041550.1 Bixa orellana</name>
+<branch_length>0.0919591627</branch_length>
+</clade>
+<clade>
+<name>NC 056948.1 Muntingia calabura</name>
+<branch_length>0.1298605600</branch_length>
+</clade>
+</clade></clade><clade>
+<name>NC 086661.1 Coelostegia griffithii</name>
+<branch_length>0.0601132204</branch_length>
+</clade>
+</clade><clade>
+<branch_length>0.8880184312</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>MZ160992.1 Dipterocarpus intricatus</name>
+<branch_length>0.1934510068</branch_length>
+</clade>
+<clade>
+<name>NC 065015.1 Reevesia rotundifolia</name>
+<branch_length>0.0322900936</branch_length>
+</clade>
+</clade></clade></clade><clade>
+<branch_length>0.0009133137</branch_length>
+<confidence type="bootstrap">97.7</confidence>
+<clade>
+<name>NC 038057.1 Heritiera parvifolia</name>
+<branch_length>0.0117726638</branch_length>
+</clade>
+<clade>
+<name>NC 054170.1 Sterculia lanceolata</name>
+<branch_length>0.0236022839</branch_length>
+</clade>
+</clade></clade><clade>
+<branch_length>0.0021825146</branch_length>
+<confidence type="bootstrap">100</confidence>
+<clade>
+<name>NC 037242.1 Firmiana major</name>
+<branch_length>0.0047785815</branch_length>
+</clade>
+<clade>
+<name>NC 083142.1 Firmiana kwangsiensis</name>
+<branch_length>0.0072233388</branch_length>
+</clade>
+</clade></clade></phylogeny></phyloxml>

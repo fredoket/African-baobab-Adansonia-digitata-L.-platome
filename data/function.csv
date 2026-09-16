@@ -1,0 +1,116 @@
+Gene Function,Genes
+Splicing,matK
+Assembly ,ccsA
+Envelope protein,cemA
+Protease,clpP1
+NADH,ndhA
+NADH,ndhB
+NADH,ndhC
+NADH,ndhD
+NADH,ndhE
+NADH,ndhF
+NADH,ndhG
+NADH,ndhH
+NADH,ndhI
+NADH,ndhJ
+NADH,ndhK
+Translational,infA
+Photosystem I,pafI
+Photosystem I,pafII
+Photosystem I,pbf1
+Biosynthesis,accD
+ATP synthase,atpA
+ATP synthase,atpB
+ATP synthase,atpE
+ATP synthase,atpF
+ATP synthase,atpH
+ATP synthase,atpI
+Cytochrome,petA
+Cytochrome,petB
+Cytochrome,petD
+Cytochrome,petG
+Cytochrome,petL
+Cytochrome,petN
+Photosystem I,psaA
+Photosystem I,psaB
+Photosystem I,psaC
+Photosystem I,psaI
+Photosystem I,psaJ
+Photosystem II,psbA
+Photosystem II,psbB
+Photosystem II,psbC
+Photosystem II,psbD
+Photosystem II,psbE
+Photosystem II,psbF
+Photosystem II,psbH
+Photosystem II,psbI
+Photosystem II,psbJ
+Photosystem II,psbK
+Photosystem II,psbL
+Photosystem II,psbM
+Photosystem II,psbT
+Photosystem II,psbZ
+Carbon fixation,rbcL
+Ribosomal,rps11
+Ribosomal,rps12
+Ribosomal,rps14
+Ribosomal,rps15
+Ribosomal,rps16
+Ribosomal,rps18
+Ribosomal,rps19
+Ribosomal,rps2
+Ribosomal,rps3
+Ribosomal,rps4
+Ribosomal,rps7
+Ribosomal,rps8
+Ribosomal,rrn16
+Ribosomal,rrn23
+Ribosomal,rrn4.5
+Ribosomal,rrn5
+Ribosomal,rpl14
+Ribosomal,rpl16
+Ribosomal,rpl2
+Ribosomal,rpl20
+Ribosomal,rpl22
+Ribosomal,rpl23
+Ribosomal,rpl32
+Ribosomal,rpl33
+Ribosomal,rpl36
+RNA polymerase,rpoA
+RNA polymerase,rpoB
+RNA polymerase,rpoC1
+RNA polymerase,rpoC2
+tRNA,trnA-UGC
+tRNA,trnC-ACA
+tRNA,trnC-GCA
+tRNA,trnD-GUC
+tRNA,trnE-UUC
+tRNA,trnF-GAA
+tRNA,trnG-GCC
+tRNA,trnG-UCC
+tRNA,trnH-GUG
+tRNA,trnI-GAU | trnE-UUC
+tRNA,trnI-GAU
+tRNA,trnK-UUU
+tRNA,trnL-CAA
+tRNA,trnL-UAA
+tRNA,trnL-UAG
+tRNA,trnM-CAU
+tRNA,trnN-GUU
+tRNA,trnP-UGG
+tRNA,trnQ-UUG
+tRNA,trnR-ACG
+tRNA,trnR-UCU
+tRNA,trnS-CGA
+tRNA,trnS-GCU
+tRNA,trnS-GGA
+tRNA,trnS-UGA
+tRNA,trnT-GGU
+tRNA,trnT-UGU
+tRNA,trnV-GAC
+tRNA,trnV-UAC | trnC-ACA
+tRNA,trnV-UAC*
+tRNA,trnW-CCA
+tRNA,trnY-GUA
+Protein import ,ycf1
+Protein import ,ycf2
