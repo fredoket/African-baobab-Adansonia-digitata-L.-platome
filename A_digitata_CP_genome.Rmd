@@ -6,43 +6,54 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE
+)
 ```
 
-## Load the required packages
+## Load/Install all the required packages
 
 ```{r echo=FALSE, message=FALSE}
+# Install pacman once if it is not already installed
+# install.packages("pacman")
 pacman::p_load(
   tidyverse,
   viridis,
   reshape2,
-  ggpubr
+  ggpubr,
+  ggplot2,
+  ggrepel,
+  dplyr,
+  tidyr,
+  patchwork,
+  ggbreak,
+  ggdendro,
+  factoextra,
+  ggplotify,
+  gridExtra,
+  genoPlotR,
+  ape,
+  readr,
+  ade4,
+  pheatmap,
+  RColorBrewer,
+  grid,
+  phytools,
+  stringr,
+  ggbeeswarm
 )
-library(ggplot2)
-library(ggrepel)
-library(dplyr)
-library(tidyr)
-library(patchwork)
-library(ggbreak)
-library(ggdendro)
-library(factoextra)
-library(ggplotify)
-library(gridExtra)
+
 ```
 
 
 ## ANALYSIS OF ANI and PCA 
 
 ```{r, echo=FALSE, message=FALSE}
-library(ggplot2)
-library(ggdendro)
-library(factoextra)
-library(patchwork)
-library(ggplotify)
-library(gridExtra)
 
 # Load ANI data
-source("scripts/ani.R")
+source("script/ani.R")
 
 ani_dist <- 100 - ani
 
@@ -61,7 +72,7 @@ p98 <- plot(
 p98
 
 # Load PCA script
-source("scripts/pca.R")
+source("script/pca.R")
 
 # Hierarchical clustering
 hc <- hclust(
@@ -124,9 +135,6 @@ ggsave(
 
 
 ```{r}
-library(genoPlotR)
-library(ape)
-
 # Load genebank files
 gbk_files <- list.files(
   "data_1",
@@ -306,7 +314,7 @@ dev.off()
 
 # Relative codon usage analysis in comparison with other adansonai species
 ```{r}
-source("scripts/rscu_script.R")
+source("script/rscu_script.R")
 
 # Save high quality PDF
 ggsave(
@@ -360,8 +368,11 @@ ssc <- gene |>
 uirs <- bind_rows(ira, irb) |>  
   distinct(gene, .keep_all = TRUE)
 ```
+
+
+
 ```{r, echo=FALSE, message=FALSE}
-# Load data---------------------------------------------------------------------
+# Load data
 codon <- read_csv("data/codon_df.csv")
 
 codon$GC12 <- (3 * codon$GC - codon$GC3s) / 2
@@ -379,10 +390,6 @@ codon$ENC_diff_ratio <- (codon$eNC - codon$Nc)/
 
 ## Nc–GC3 plot 
 ```{r, echo=FALSE, message=FALSE}
-library(dplyr)
-library(ggrepel)
-library(ggplot2)
-
 # Select 10 genes with strongest positive codon bias and 5 with weakest
 label_genes <- codon |> 
   arrange(desc((eNC-Nc)/eNC)) |> 
@@ -581,8 +588,6 @@ theme(
 p4
 ```
 ```{r}
-library(patchwork)
-library(ggbreak)
 # Cumulative and GC12 graph
 graph2 <- ((p3 | p1) /
            (p2 | p4)) +
@@ -639,12 +644,9 @@ p5 <- ggplot(codon, aes(x = GC_bias, y = AT_bias)) +
 
 p5
 ```
+
 #COA_ANALYSIS
 ```{r, echo=FALSE, message=FALSE}
-library(ade4)
-library(ggplot2)
-library(ggrepel)
-library(ggbreak)
 
 coa1 <- read.table("data/coa.txt",
                    sep = "\t",          
@@ -714,6 +716,7 @@ p7
 
 ```
 
+
 ```{r, echo=FALSE, message=FALSE}
 # Calculate A3(A3+T3) and G3(G3+C3) ratio---------------------------------------
 aa_ratio <- codon
@@ -734,9 +737,8 @@ cat("Mean G3/(G3+C3):", round(mean_G3_ratio, 3), "\n")
 cat("Standard Deviation:", round(sd_G3_ratio, 3), "\n")
 ```
 
+
 ```{r, echo=FALSE, message=FALSE}
-library(patchwork)
-library(ggbreak)
 
 graph3 <- (p5 | p7)+
   plot_annotation(tag_levels = 'a')
@@ -753,6 +755,7 @@ ggsave(
 
 graph3
 ```
+
 
 # Nucleotide diversity
 ```{r, echo=FALSE, message=FALSE}
@@ -811,6 +814,7 @@ box2 <- bind_rows(data1, data2) |>
   dplyr::filter(pi <= 0.15)
 ```
 
+
 ```{r}
 # Nucleotide diversity
 mean_pi <- mean(nu_gene$pi, na.rm = TRUE)
@@ -835,6 +839,7 @@ p19 <- ggplot(nu_gene, aes(x = Gene, y = pi, color = Location)) +
 
 p19
 ```
+
 
 ```{r}
 # Nucleotide diversity
@@ -908,7 +913,6 @@ p22
 
 ## Merging the nucleotide diversity graphs
 ```{r, echo=FALSE, message=FALSE}
-library(patchwork)
 
 clean_theme <- theme(
   plot.margin = margin(0, 0, 0, 0),
@@ -948,7 +952,6 @@ ggsave(
 # RNA editing sites
 
 ```{r}
-library(tidyverse)
 
 # Load data
 edit <- read_tsv(
@@ -1008,9 +1011,6 @@ aa_counts <- edit |>
 ```
 
 ```{r}
-library(tidyverse)
-library(patchwork)
-library(viridis)
 
 # ---------------------------------------------------------
 # 1. Editing sites per gene
@@ -1242,7 +1242,6 @@ p_group <- edit |>
 
 # Combine the plots
 ```{r}
-library(patchwork)
 
 design <- "
 ABC
@@ -1281,22 +1280,13 @@ ggsave(
 
 
 ```{r}
-# Selection Analysis - Visualization & Metrics
-library(tidyverse)
-library(ggplot2)
-library(ggrepel)
-library(patchwork)
-library(pheatmap)
-library(RColorBrewer)
-
-
 # Load data
 df <- readr::read_csv("data/all_models_merged.csv")
 
 
 # Prepare M0 data
-m0 <- df %>%
-  filter(model == "M0") %>%
+m0 <- df |> 
+  filter(model == "M0") |> 
   mutate(
     omega_clean = ifelse(omega >= 900, NA, omega),   
     omega_flag  = ifelse(omega >= 900, "boundary (dS≈0)", 
@@ -1324,12 +1314,12 @@ m0 <- df %>%
 
 
 # LRT calculations (M1a vs M2a, M7 vs M8 
-lnL_wide <- df %>%
-  select(gene, model, lnL) %>%
-  filter(model %in% c("M0","M1a","M2a","M7","M8")) %>%
+lnL_wide <- df |> 
+  select(gene, model, lnL) |> 
+  filter(model %in% c("M0","M1a","M2a","M7","M8")) |> 
   pivot_wider(names_from = model, values_from = lnL, names_prefix = "lnL_")
 
-lrt <- lnL_wide %>%
+lrt <- lnL_wide |> 
   mutate(
     LRT_M1a_M2a = 2 * (lnL_M2a - lnL_M1a),
     p_M1a_M2a   = pchisq(LRT_M1a_M2a, df = 2, lower.tail = FALSE),
@@ -1346,28 +1336,26 @@ lrt <- lnL_wide %>%
   ) 
 
 cat("=== LRT Results: M1a vs M2a ===\n")
-lrt %>% filter(sig_M1a_M2a) %>%
-  select(gene, LRT_M1a_M2a, p_M1a_M2a) %>%
-  arrange(p_M1a_M2a) %>% print()
+lrt |>  filter(sig_M1a_M2a) |> 
+  select(gene, LRT_M1a_M2a, p_M1a_M2a) |> 
+  arrange(p_M1a_M2a) |>
+  print()
 
 cat("\n=== LRT Results: M7 vs M8 ===\n")
-lrt %>% filter(sig_M7_M8) %>%
-  select(gene, LRT_M7_M8, p_M7_M8) %>%
-  arrange(p_M7_M8) %>% print()
+lrt |> 
+  filter(sig_M7_M8) |> 
+  select(gene, LRT_M7_M8, p_M7_M8) |> 
+  arrange(p_M7_M8) |>
+  print()
 
 cat("\n=== Genes significant in BOTH tests ===\n")
-lrt %>% filter(pos_sel_both) %>%
-  select(gene, LRT_M1a_M2a, p_M1a_M2a, LRT_M7_M8, p_M7_M8) %>%
+lrt |>
+  filter(pos_sel_both) |> 
+  select(gene, LRT_M1a_M2a, p_M1a_M2a, LRT_M7_M8, p_M7_M8) |> 
   print()
 ```
 
 ```{r}
-library(ggbeeswarm)
-library(ggplot2)
-library(dplyr)
-library(ggplot2)
-library(dplyr)
-
 p_omega <- m0 |> 
   filter(!is.na(omega_clean)) |>
   mutate(func_group = ifelse(func_group %in% c("Protease",
@@ -1395,8 +1383,6 @@ print(p_omega)
 ```
 
 ```{r}
-library(tidyverse)
-library(grid) 
 
 # -----------------------------
 # 1. Input data
@@ -1404,12 +1390,12 @@ library(grid)
 df <- readr::read_csv("data/all_models_merged.csv")
 
 # Extract lnL by model
-lnL_wide <- df %>%
-  select(gene, model, lnL) %>%
-  filter(model %in% c("M0","M1a","M2a","M7","M8")) %>%
+lnL_wide <- df |> 
+  select(gene, model, lnL) |> 
+  filter(model %in% c("M0","M1a","M2a","M7","M8")) |> 
   pivot_wider(names_from = model, values_from = lnL, names_prefix = "lnL_")
 
-lrt <- lnL_wide %>%
+lrt <- lnL_wide |> 
   mutate(
     # M1a vs M2a: df = 2
     LRT_M1a_M2a = 2 * (lnL_M2a - lnL_M1a),
@@ -1447,7 +1433,7 @@ lrt_long <- data.frame(
 # -----------------------------
 # 3. Compute -log10(p)
 # -----------------------------
-lrt_long <- lrt_long %>%
+lrt_long <- lrt_long |> 
   mutate(
     logP = -log10(p)
   )
@@ -1455,20 +1441,20 @@ lrt_long <- lrt_long %>%
 # -----------------------------
 # 4. Rank genes by strongest signal
 # -----------------------------
-gene_rank <- lrt_long %>%
-  group_by(gene) %>%
-  summarise(max_logP = max(logP, na.rm = TRUE)) %>%
-  arrange(desc(max_logP)) %>%
+gene_rank <- lrt_long |> 
+  group_by(gene) |> 
+  summarise(max_logP = max(logP, na.rm = TRUE)) |> 
+  arrange(desc(max_logP)) |> 
   mutate(rank = row_number())
 
 # -----------------------------
 # 4b. KEEP ONLY TOP 30 GENES
 # -----------------------------
-top_genes <- gene_rank %>%
+top_genes <- gene_rank |> 
   slice_head(n = 30)
 
 # Filter dataset to top 30 genes only
-lrt_long <- lrt_long %>%
+lrt_long <- lrt_long |> 
   filter(gene %in% top_genes$gene)
 
 # Reapply correct ordering
@@ -1479,7 +1465,7 @@ lrt_long$gene <- factor(lrt_long$gene,
 # Highlight genes under selection
 highlight_genes <- c("petA", "ycf1", "rbcL", "rpoC1")
 
-lrt_long <- lrt_long %>%
+lrt_long <- lrt_long |> 
   mutate(
     group = ifelse(gene %in% highlight_genes,
                    "Genes under selection",
@@ -1546,7 +1532,6 @@ print(P_hierachy)
 ```
 
 ```{r}
-library(patchwork)
 
 combined_plot <- (p_omega | P_hierachy) +
   
@@ -1568,11 +1553,6 @@ print(combined_plot)
 ```{r, echo=TRUE, warning=TRUE}
 
 # Phylogenetic tree
-library(ape)
-library(phytools)
-library(stringr)
-
-
 ml_46 <- read.tree("data/ml_46.txt")
 bi_46 <- read.tree("data/bi_46.txt")
 

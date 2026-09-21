@@ -1,0 +1,19 @@
+# RStudio
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+
+# Generated figures and outputs
+outputs/
+figure_r/
+figure_/
+figures_r/
+results/
+Figures/
+
+# Old scripts directory
+scripts/
+
+# Generated PDF
+RSCU_heatmap.pdf
