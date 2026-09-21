@@ -1,4 +1,4 @@
-# Comprehensive Characterisation of the *Adansonia digitata* Plastome
+# Comprehensive characterisation of the *Adansonia digitata* Plastome
 
 Data, R scripts, and R Markdown workflow for the comprehensive characterisation of the chloroplast genome (plastome) of the African baobab, *Adansonia digitata* L.
 
